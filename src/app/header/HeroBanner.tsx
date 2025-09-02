@@ -14,11 +14,10 @@ export default function HeroSection() {
       <div className="relative mx-auto max-w-7xl px-4 py-24 grid md:grid-cols-2 gap-12 items-center">
         <div>
           <h1 className="text-3xl md:text-5xl font-semibold leading-tight">
-            Not just loads — <span className="text-teal-400">we deliver careers & impact</span>
+            Not just loads — <span className="text-teal-400">we deliver careers & impact across industries</span>
           </h1>
           <p className="mt-5 text-slate-200">
-            US trucking & brokerage backbone operated from Mohali. We hire experienced BPO/logistics talent and
-            amplify the story of our founder, <strong>Mr. Rajwinder Singh Boparai</strong>.
+            US trucking & brokerage backbone operated from Mohali. We hire experienced BPO/logistics talent and continue to amplify our success for processes outside logistics and supply chain under the aegis of our founder, <strong> Mr. Rajwinder Singh Boparai</strong>.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <a href="#careers" className="rounded-xl bg-teal-600 px-4 py-2 font-semibold">

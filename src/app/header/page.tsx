@@ -10,12 +10,12 @@ export default function Header() {
   const toggleMobile = () => setMobileOpen((prev) => !prev);
 
   return (
-    <header className="sticky top-0 z-40 border-b bg-white/90 backdrop-blur">
+    <header className="sticky top-0 z-40 border-b bg-teal-600/50 bg-teal/40 backdrop-blur">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
         {/* Brand */}
         <div className="flex items-center gap-2">
           <Link href="/" className="hover:text-teal-700 flex items-center">
-          <img src="/srp-us-dark.png" width="150px" />
+          <img src="/srp-us-white.png" width="150px" />
             {/* <div className="h-8 w-8 rounded-md bg-teal-600" />
             <strong className="text-slate-900 ml-2">
               SRP US Logistics – India
