@@ -3,7 +3,9 @@
 // TailwindCSS recommended. If not using Tailwind, replace classNames with your CSS.
 "use client";
 
+import Head from "next/head";
 import React, { useMemo, useState } from "react";
+import Header from "./header/page";
 
 // ---- Mock Data (replace with CMS/API later) -------------------------------
 const JOBS = [
@@ -108,14 +110,14 @@ export default function SRPIndiaSite() {
   return (
     <div className="min-h-screen bg-white text-slate-800">
       {/* Top Bar */}
-      <header className="sticky top-0 z-40 bg-white/90 backdrop-blur border-b">
+      {/* <header className="sticky top-0 z-40 bg-white/90 backdrop-blur border-b">
         <div className="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            {/* Brand mark approximated from SRP site (teal) */}
-            <div className="h-8 w-8 rounded-md bg-teal-600" />
+                    <div className="h-8 w-8 rounded-md bg-teal-600" />
             <strong className="text-slate-900">SRP US Logistics – India</strong>
           </div>
           <nav className="hidden md:flex items-center gap-6 text-sm">
+                <a href="/about" className="hover:text-teal-700">About</a>
             <a href="#founder" className="hover:text-teal-700">Founder</a>
             <a href="#careers" className="hover:text-teal-700">Careers</a>
             <a href="#events" className="hover:text-teal-700">Events</a>
@@ -124,8 +126,8 @@ export default function SRPIndiaSite() {
           </nav>
           <a href="#careers" className="inline-flex items-center rounded-xl bg-teal-600 px-3 py-2 text-white text-sm font-semibold shadow hover:bg-teal-700">We’re Hiring</a>
         </div>
-      </header>
-
+      </header> */}
+<Header />
       {/* Hero – borrow composition cues from BestBay: bold headline, value props, stats */}
       <section className="bg-slate-900 text-white">
         <div className="mx-auto max-w-7xl px-4 py-20 grid md:grid-cols-2 gap-12 items-center">
