@@ -27,7 +27,7 @@ export default function Careers() {
         <Header />
     <main className="container mx-auto max-w-7xl px-4 py-10">
       <h1 className="text-3xl font-semibold">Careers</h1>
-      <p className="mt-4 max-w-3xl text-lg text-gray-700 dark:text-gray-300">
+      <p className="mt-4 max-w-3xl text-lg text-gray-700 ">
         Join a team that blends US-grade process rigor with Indian ingenuity. We’re hiring experienced
         BPO/logistics professionals who want to lead outcomes, not just tasks.
       </p>
@@ -36,15 +36,15 @@ export default function Careers() {
         {items.map((item) => (
           <li
             key={item.link}
-            className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm transition-shadow hover:shadow-md dark:border-gray-700 dark:bg-gray-800 dark:hover:shadow-lg"
+            className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm transition-shadow hover:shadow-md"
           >
             <Link
               href={item.link}
-              className="text-teal-700 font-semibold hover:underline dark:text-teal-400"
+              className="text-teal-700 font-semibold hover:underline "
             >
               {item.title} →
             </Link>
-            <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">{item.desc}</p>
+            <p className="mt-2 text-sm text-gray-600 ">{item.desc}</p>
           </li>
         ))}
       </ul>
