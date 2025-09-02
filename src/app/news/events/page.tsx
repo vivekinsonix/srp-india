@@ -15,14 +15,14 @@ export default function EventsPage() {
       date: "Jul 2025",
       title: "Youth talk on BPO careers",
       desc: "Key takeaways for local talent and first-time professionals.",
-      link: "#",
+      link: "../careers/openings/opening-senior-bpo-agent",
       cta: "Read more →",
     },
     {
       date: "Jun 2025",
       title: "Podcast: Scaling brokerage from Mohali",
       desc: "A conversation on operations, training, and community impact.",
-      link: "#",
+      link: "../careers/openings/opening-senior-bpo-agent",
       cta: "Listen →",
     },
   ];

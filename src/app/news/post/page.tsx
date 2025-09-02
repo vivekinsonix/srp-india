@@ -22,7 +22,7 @@ export default function PostsPage() {
       title: "Media Kit Updated",
       meta: "Aug 15, 2025 • Media Team",
       desc: "Fresh headshots, campus images, and logos available for download.",
-      link: "/news/media-library.html",
+      link: "post/media-library",
       cta: "Media Library →",
     },
   ];
