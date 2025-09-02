@@ -8,13 +8,13 @@ const posts = [
       title: "Founder Spotlight: Rajwinder Singh Boparai",
       meta: "Aug 28, 2025 • SRP Editorial",
       desc: "From trucks to a multi-business logistics brand—impact in Punjab.",
-      link: "/blogs/post-founder-spotlight",
+      link: "blogs/post-founder-spotlight",
     },
     {
       title: "Careers in US Logistics BPO – Mohali",
       meta: "Aug 26, 2025 • People Ops",
       desc: "We’re hiring experienced agents who’ve handled TMS/CRM and US voice processes.",
-      link: "/blogs/post-careers-bpo",
+      link: "blogs/post-careers-bpo",
     },
     {
       title: "Life on the Night Shift",
