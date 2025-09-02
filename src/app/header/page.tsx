@@ -63,10 +63,41 @@ export default function Header() {
               </div>
             </div>
           </div>
-
-          <Link href="/careers" className="hover:text-teal-700">
-            Careers
-          </Link>
+        <div className="relative group">
+            <Link href="/careers" className="hover:text-teal-700">
+              Careers
+            </Link>
+            <div
+              className="
+                absolute left-0 mt-0  hidden
+                group-hover:block hover:block
+                w-56 rounded-md border-0 shadow-lg bg-white
+              "
+            >
+              <div className="flex flex-col py-2">
+                <Link
+                  href="/careers/benefits"
+                  className="block px-4 py-2 text-sm hover:bg-teal-50 hover:text-teal-700"
+                >
+                  Benefits
+                </Link>
+                <Link
+                  href="/careers/culture"
+                  className="block px-4 py-2 text-sm hover:bg-teal-50 hover:text-teal-700"
+                >
+                  Culture
+                </Link>
+                <Link
+                  href="/careers/openings"
+                  className="block px-4 py-2 text-sm hover:bg-teal-50 hover:text-teal-700"
+                >
+                 Openings
+                </Link>
+          
+              </div>
+            </div>
+          </div>
+       
           <Link href="/news" className="hover:text-teal-700">
             News
           </Link>
