@@ -138,27 +138,53 @@ export default function Header() {
                 About
               </summary>
               <div className="ml-4 mt-1 flex flex-col gap-1 text-slate-700">
-                <Link href="/about/founder" onClick={() => setMobileOpen(false)}>
+                <Link href="/about/founder" onClick={() => setMobileOpen(false)}  className="block px-4 py-2 text-sm hover:bg-teal-50 hover:text-teal-700">
                   Founder
                 </Link>
-                <Link href="/about/purpose" onClick={() => setMobileOpen(false)}>
+                <Link href="/about/purpose" onClick={() => setMobileOpen(false)}  className="block px-4 py-2 text-sm hover:bg-teal-50 hover:text-teal-700">
                   Purpose
                 </Link>
                 <Link
                   href="/about/improving-communities"
                   onClick={() => setMobileOpen(false)}
+                   className="block px-4 py-2 text-sm hover:bg-teal-50 hover:text-teal-700"
                 >
                   Improving Communities
                 </Link>
                 <Link
                   href="/about/working-at-srp"
                   onClick={() => setMobileOpen(false)}
+                   className="block px-4 py-2 text-sm hover:bg-teal-50 hover:text-teal-700"
                 >
                   Working at SRP
                 </Link>
               </div>
             </details>
-
+       <details>
+              <summary className="cursor-pointer py-1 font-semibold">
+                Careers
+              </summary>
+              <div className="ml-4 mt-1 flex flex-col gap-1 text-slate-700">
+                 <Link
+                  href="/careers/benefits" onClick={() => setMobileOpen(false)}
+                  className="block px-4 py-2 text-sm hover:bg-teal-50 hover:text-teal-700"
+                >
+                  Benefits
+                </Link>
+                <Link
+                  href="/careers/culture" onClick={() => setMobileOpen(false)}
+                  className="block px-4 py-2 text-sm hover:bg-teal-50 hover:text-teal-700"
+                >
+                  Culture
+                </Link>
+                <Link
+                  href="/careers/openings" onClick={() => setMobileOpen(false)}
+                  className="block px-4 py-2 text-sm hover:bg-teal-50 hover:text-teal-700"
+                >
+                 Openings
+                </Link>
+              </div>
+            </details>
             <Link href="/careers" onClick={() => setMobileOpen(false)}>
               Careers
             </Link>
