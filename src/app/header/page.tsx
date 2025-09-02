@@ -10,7 +10,7 @@ export default function Header() {
   const toggleMobile = () => setMobileOpen((prev) => !prev);
 
   return (
-    <header className="sticky top-0 z-40 border-b bg-teal-600/50 bg-teal/40 backdrop-blur">
+    <header className="sticky top-0 z-40 border-b bg-slate-900 bg-teal/40 backdrop-blur">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
         {/* Brand */}
         <div className="flex items-center gap-2">
@@ -26,7 +26,7 @@ export default function Header() {
         {/* Desktop Navigation */}
         <nav className="hidden items-center gap-6 text-sm md:flex">
           <div className="relative group">
-            <Link href="/about" className="hover:text-teal-700">
+            <Link href="/about" className="hover:text-teal-400 text-teal-300">
               About
             </Link>
             <div
@@ -65,7 +65,7 @@ export default function Header() {
             </div>
           </div>
         <div className="relative group">
-            <Link href="/careers" className="hover:text-teal-700">
+            <Link href="/careers" className="hover:text-teal-400 text-teal-300">
               Careers
             </Link>
             <div
@@ -99,7 +99,7 @@ export default function Header() {
             </div>
           </div>
                <div className="relative group">
-            <Link href="/news" className="hover:text-teal-700">
+            <Link href="/news" className="hover:text-teal-400 text-teal-300">
               News
             </Link>
             <div
@@ -128,13 +128,13 @@ export default function Header() {
             </div>
           </div>
         
-          <Link href="/blogs" className="hover:text-teal-700">
+          <Link href="/blogs" className="hover:text-teal-400 text-teal-300">
             Blogs
           </Link>
-          <Link href="/suppliers" className="hover:text-teal-700">
+          <Link href="/suppliers" className="hover:text-teal-400 text-teal-300">
             Suppliers
           </Link>
-          <Link href="/contact" className="hover:text-teal-700">
+          <Link href="/contact" className="hover:text-teal-400 text-teal-300">
             Contact
           </Link>
         </nav>

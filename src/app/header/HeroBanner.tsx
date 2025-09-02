@@ -1,6 +1,6 @@
 export default function HeroSection() {
   return (
-    <section className="relative bg-slate-900 text-white z-0 h-80vh border-teal-600 md:border-b-16 py-10 shadow-2xl md:rounded-b-[45%]">
+    <section className="relative bg-slate-900 text-white z-0 h-80vh border-teal-600 md:border-b-16 py-10 shadow-2xl lg:rounded-b-[45%]">
       {/* Background image */}
       <div
         className="absolute inset-0 bg-cover bg-center  z-0 rounded-b-[40%]"
@@ -11,7 +11,8 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-slate-900/90 z-0 rounded-b-[40%]" />
 
       {/* Content */}
-      <div className="relative mx-auto max-w-7xl px-4 py-24 grid md:grid-cols-2 gap-12 items-center">
+      <div className="relative mx-auto max-w-7xl px-4 py-24">
+      <div className=" grid md:grid-cols-2 gap-12 items-center">
         <div>
           <h1 className="text-3xl md:text-5xl font-semibold leading-tight">
             Not just loads — <span className="text-teal-400">we deliver careers & impact across industries</span>
@@ -28,7 +29,21 @@ export default function HeroSection() {
             </a>
           </div>
           {/* Stats */}
-          <div className="mt-10 grid grid-cols-3 gap-6 text-center md:text-left">
+   
+        </div>
+        <div className="rounded-2xl  bg-gradient-to-br from-teal-400 to-teal-800 p-6 shadow-2xl min-h-[280px] flex items-center justify-center text-center">
+          <div>
+            <p className="text-sm uppercase tracking-widest text-teal-300">AI-enabled process improvements</p>
+            <h3 className="mt-2 text-xl font-semibold">
+             Check now if your business process qualifies for our newly launched <strong>Automation-first BPO operations that use AI + Human Hybrid Models</strong>
+            </h3>
+            <p className="mt-3 text-slate-300">Built on Zoho One, RingCentral, Turvo, DAT.</p>
+          </div>
+        </div>
+
+      </div>
+              <div className="relative mx-auto max-w-7xl px-4 py-16 grid md:grid-cols-1  gap-12 items-center">
+             <div className="mt-10 grid grid-col-3 lg:grid-cols-4 grid-col-2 gap-6 text-center md:text-left">
             <div className="rounded-2xl bg-slate-800/60 p-4 text-center">
               <div className="text-2xl font-bold">80k+</div>
               <div className="text-xs text-slate-300">Carrier support to deliver loads
@@ -42,18 +57,13 @@ round-the-clock</div>
               <div className="text-2xl font-bold">550+</div>
               <div className="text-xs text-slate-300">STeam strength to ensure 100% customer satisfaction</div>
             </div>
+               <div className="rounded-2xl bg-slate-800/60 p-4 text-center">
+              <div className="text-2xl font-bold">99%</div>
+              <div className="text-xs text-slate-300">imely performance to upscale our services continuously</div>
+            </div>
           </div>
         </div>
-        <div className="rounded-2xl  bg-gradient-to-br from-teal-400 to-teal-800 p-6 shadow-2xl min-h-[280px] flex items-center justify-center text-center">
-          <div>
-            <p className="text-sm uppercase tracking-widest text-teal-300">India Ops</p>
-            <h3 className="mt-2 text-xl font-semibold">
-              Freight Brokerage • US Accounting • IT/Admin • HR/Payroll
-            </h3>
-            <p className="mt-3 text-slate-300">Built on Zoho One, RingCentral, Turvo, DAT.</p>
-          </div>
-        </div>
-      </div>
+</div>
     </section>
   );
 }

@@ -7,6 +7,7 @@ import Head from "next/head";
 import React, { useMemo, useState } from "react";
 import Header from "./header/page";
 import HeroSection from "./header/HeroBanner";
+import { CheckCircleIcon } from "lucide-react";
 
 // ---- Mock Data (replace with CMS/API later) -------------------------------
 const JOBS = [
@@ -164,19 +165,26 @@ export default function SRPIndiaSite() {
       </section> */}
 
       {/* Founder / PR */}
-      <Section id="founder" title="Founder Spotlight: Mr. Rajwinder Singh Boparai">
+      <Section id="founder" title="Leadership Initiatives">
         <div className="grid md:grid-cols-3 gap-8 items-start">
           <div className="md:col-span-2 space-y-4">
             <p>
-              Recognized across Punjab for youth engagement and community initiatives, Mr. Boparai frequently hosts
-              dignitaries and media at our Mohali campus. This hub centralizes press kits, event invites, and podcast
-              bookings.
-            </p>
-            <ul className="list-disc pl-5 space-y-2">
-              <li>Media kit: bio, photos, logo pack, factsheet</li>
-              <li>Speaking & podcast requests</li>
-              <li>Event coverage & campus visits</li>
-            </ul>
+             Through his work at SRP, Rajwinder Singh Boparai has built platforms for employment, training, and regional engagement, making Mohali a fast growing hub for logistics, technology and community partnerships. He is recognized across Punjab and also North region of India for youth engagement and community initiatives, Mr. Boparai frequently hosts dignitaries and media at our Mohali campus and himself visits esteemed institutions to share valuable insights. 
+             </p>
+             <p>Contact us if you are looking for press kits, event invites, and podcast bookings.</p>
+           <ul className="space-y-2">
+      {[
+        'Media kit: bio, photos, logo pack, factsheet',
+        'Speaking & podcast requests',
+        'Event coverage & campus visits',
+      ].map((item) => (
+        <li key={item} className="flex items-start gap-2">
+          <CheckCircleIcon className="h-5 w-5 text-teal-500 flex-shrink-0" />
+          <span>{item}</span>
+        </li>
+      ))}
+    </ul>
+            
             <div className="flex gap-3">
               <a className="rounded-xl bg-teal-600 px-4 py-2 text-white" href="#events">See Events</a>
               <a className="rounded-xl border px-4 py-2" href="#blog">Read Stories</a>
