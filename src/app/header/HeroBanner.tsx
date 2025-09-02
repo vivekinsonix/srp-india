@@ -8,7 +8,7 @@ export default function HeroSection() {
       />
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-slate-900/90 z-0 rounded-b-[40%]" />
+      <div className="absolute inset-0 bg-slate-900/70 z-0 rounded-b-[40%]" />
 
       {/* Content */}
       <div className="relative mx-auto max-w-7xl px-4 py-24">
