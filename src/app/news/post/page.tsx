@@ -8,14 +8,14 @@ export default function PostsPage() {
       title: "Founder Spotlight: Community Initiatives",
       meta: "Aug 28, 2025 • SRP Editorial",
       desc: "Highlights from recent outreach in Mohali—career pathways and dignitary visits.",
-      link: "/blogs/post-founder-spotlight.html",
+      link: "../careers/openings/opening-senior-bpo-agent",
       cta: "Open →",
     },
     {
       title: "Careers in US Logistics BPO",
       meta: "Aug 26, 2025 • People Ops",
       desc: "We’re expanding and hiring across night-shift US logistics processes.",
-      link: "/blogs/post-careers-bpo.html",
+      link: "../careers/openings/opening-senior-bpo-agent",
       cta: "Open →",
     },
     {
