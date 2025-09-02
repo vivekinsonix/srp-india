@@ -150,7 +150,7 @@ export default function Header() {
         {/* Mobile Hamburger */}
         <button
           onClick={toggleMobile}
-          className="md:hidden inline-flex items-center justify-center rounded-md p-2 hover:bg-teal-50"
+          className="md:hidden inline-flex items-center justify-center rounded-md p-2 bg-teal-500 hover:bg-teal-50"
         >
           {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
