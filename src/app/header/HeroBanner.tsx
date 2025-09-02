@@ -1,14 +1,14 @@
 export default function HeroSection() {
   return (
-    <section className="relative bg-slate-900 text-white z-0 h-80vh border-teal-600 md:border-b-16 py-10  md:rounded-b-[50%]">
+    <section className="relative bg-slate-900 text-white z-0 h-80vh border-teal-600 md:border-b-16 py-10 shadow-2xl md:rounded-b-[45%]">
       {/* Background image */}
       <div
-        className="absolute inset-0 bg-cover bg-center  z-0 rounded-b-[50%]"
+        className="absolute inset-0 bg-cover bg-center  z-0 rounded-b-[40%]"
         style={{ backgroundImage: "url('/hero-bg.jpg')" }}
       />
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-slate-900/90 z-0 rounded-b-[50%]" />
+      <div className="absolute inset-0 bg-slate-900/90 z-0 rounded-b-[40%]" />
 
       {/* Content */}
       <div className="relative mx-auto max-w-7xl px-4 py-24 grid md:grid-cols-2 gap-12 items-center">
