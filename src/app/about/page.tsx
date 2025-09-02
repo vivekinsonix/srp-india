@@ -32,7 +32,7 @@ export default function AboutSRP() {
     <Header />
     <main className="container mx-auto max-w-7xl  px-4 py-10">
       <h1 className="text-3xl font-semibold">About SRP</h1>
-      <p className="mt-4 max-w-3xl text-lg text-gray-700 dark:text-gray-300">
+      <p className="mt-4 max-w-3xl text-lg text-gray-700">
         We connect US logistics demand with India’s talent. Our Mohali center supports brokerage,
         dispatch, accounting, QA, HR, and IT for a solid US trucking & brokerage network.
       </p>
@@ -42,10 +42,10 @@ export default function AboutSRP() {
           <Link
             key={card.link}
             href={card.link}
-            className="block rounded-lg border border-gray-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md dark:border-gray-700 dark:bg-gray-800 dark:hover:shadow-lg"
+            className="block rounded-lg border border-gray-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md"
           >
-            <h2 className="text-xl font-semibold text-gray-900 dark:text-white">{card.title}</h2>
-            <p className="mt-2 text-gray-600 dark:text-gray-300">{card.desc}</p>
+            <h2 className="text-xl font-semibold text-gray-900 ">{card.title}</h2>
+            <p className="mt-2 text-gray-600 ">{card.desc}</p>
           </Link>
         ))}
       </div>
