@@ -15,10 +15,11 @@ export default function Header() {
         {/* Brand */}
         <div className="flex items-center gap-2">
           <Link href="/" className="hover:text-teal-700 flex items-center">
-            <div className="h-8 w-8 rounded-md bg-teal-600" />
+          <img src="/srp-us-dark.png" width="150px" />
+            {/* <div className="h-8 w-8 rounded-md bg-teal-600" />
             <strong className="text-slate-900 ml-2">
               SRP US Logistics – India
-            </strong>
+            </strong> */}
           </Link>
         </div>
 

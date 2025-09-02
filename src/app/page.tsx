@@ -6,6 +6,7 @@
 import Head from "next/head";
 import React, { useMemo, useState } from "react";
 import Header from "./header/page";
+import HeroSection from "./header/HeroBanner";
 
 // ---- Mock Data (replace with CMS/API later) -------------------------------
 const JOBS = [
@@ -129,7 +130,9 @@ export default function SRPIndiaSite() {
       </header> */}
 <Header />
       {/* Hero – borrow composition cues from BestBay: bold headline, value props, stats */}
-      <section className="bg-slate-900 text-white">
+
+      <HeroSection />
+      {/* <section className="bg-slate-900 text-white">
         <div className="mx-auto max-w-7xl px-4 py-20 grid md:grid-cols-2 gap-12 items-center">
           <div>
             <h1 className="text-3xl md:text-5xl font-semibold leading-tight">
@@ -143,7 +146,7 @@ export default function SRPIndiaSite() {
               <a href="#careers" className="rounded-xl bg-teal-600 px-4 py-2 font-semibold">View Openings</a>
               <a href="#founder" className="rounded-xl border border-white/20 px-4 py-2">Founder Spotlight</a>
             </div>
-            {/* Stats – BestBay-like counters */}
+          
             <div className="mt-10 grid grid-cols-3 gap-6">
               <Stat kpi="18+" label="Years in US market (group)" />
               <Stat kpi="30k+" label="Carrier Partners" />
@@ -158,7 +161,7 @@ export default function SRPIndiaSite() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Founder / PR */}
       <Section id="founder" title="Founder Spotlight: Mr. Rajwinder Singh Boparai">
