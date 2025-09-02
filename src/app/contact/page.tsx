@@ -66,7 +66,7 @@ export default function Contact() {
               placeholder="you@company.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="flex-1 rounded-xl border border-gray-300 px-3 py-2 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+              className="flex-1 rounded-xl border border-gray-300 px-3 py-2 "
             />
             <button
               type="submit"

@@ -8,6 +8,7 @@ import React, { useMemo, useState } from "react";
 import Header from "./header/page";
 import HeroSection from "./header/HeroBanner";
 import { CheckCircleIcon } from "lucide-react";
+import Footer from "./footer/page";
 
 // ---- Mock Data (replace with CMS/API later) -------------------------------
 const JOBS = [
@@ -340,8 +341,8 @@ export default function SRPIndiaSite() {
           </div>
         </div>
       </Section>
-
-      <footer className="border-t">
+<Footer />
+      {/* <footer className="border-t">
         <div className="mx-auto max-w-7xl px-4 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm">© {new Date().getFullYear()} SRP US Logistics Pvt Ltd. All rights reserved.</p>
           <nav className="flex items-center gap-4 text-sm">
@@ -351,7 +352,7 @@ export default function SRPIndiaSite() {
             <a href="#blog" className="hover:text-teal-700">Blog</a>
           </nav>
         </div>
-      </footer>
+      </footer> */}
     </div>
   );
 }

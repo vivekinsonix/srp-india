@@ -30,7 +30,7 @@ const posts = [
         <Header />
     <main className="container mx-auto max-w-7xl  px-4 py-10">
       <h1 className="text-3xl font-semibold">Blogs</h1>
-      <p className="mt-2 text-slate-600 dark:text-slate-300">
+      <p className="mt-2 text-slate-600 ">
         Stories about careers, operations, and our journey.
       </p>
 
@@ -38,13 +38,13 @@ const posts = [
         {posts.map((post) => (
           <article
             key={post.title}
-            className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md dark:border-gray-700 dark:bg-gray-800 dark:hover:shadow-lg"
+            className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md "
           >
-            <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
+            <h2 className="text-lg font-semibold text-gray-900 ">
               {post.title}
             </h2>
-            <p className="text-xs text-slate-500 dark:text-slate-400">{post.meta}</p>
-            <p className="mt-2 text-gray-700 dark:text-gray-300">{post.desc}</p>
+            <p className="text-xs text-slate-500 ">{post.meta}</p>
+            <p className="mt-2 text-gray-700 ">{post.desc}</p>
             <Link
               href={post.link}
               className="mt-3 inline-block font-semibold text-teal-700 hover:underline dark:text-teal-400"

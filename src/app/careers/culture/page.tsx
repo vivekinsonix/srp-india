@@ -9,7 +9,7 @@ export default function OurCulture() {
           <Header />
   <main className="container mx-auto max-w-7xl px-4 py-10">
       <h1 className="text-3xl font-semibold">Our Culture</h1>
-      <p className="mt-4 max-w-3xl text-lg text-gray-700 dark:text-gray-300">
+      <p className="mt-4 max-w-3xl text-lg text-gray-700 ">
         We prioritize clarity, fairness, and ownership. Teams are small, expectations
         are explicit, and leaders coach continuously.
       </p>
