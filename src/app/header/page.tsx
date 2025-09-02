@@ -97,10 +97,36 @@ export default function Header() {
               </div>
             </div>
           </div>
-       
-          <Link href="/news" className="hover:text-teal-700">
-            News
-          </Link>
+               <div className="relative group">
+            <Link href="/news" className="hover:text-teal-700">
+              News
+            </Link>
+            <div
+              className="
+                absolute left-0 mt-0  hidden
+                group-hover:block hover:block
+                w-56 rounded-md border-0 shadow-lg bg-white
+              "
+            >
+              <div className="flex flex-col py-2">
+                <Link
+                  href="/news/events"
+                  className="block px-4 py-2 text-sm hover:bg-teal-50 hover:text-teal-700"
+                >
+                  Events
+                </Link>
+                <Link
+                  href="/news/post"
+                  className="block px-4 py-2 text-sm hover:bg-teal-50 hover:text-teal-700"
+                >
+                  Posts
+                </Link>
+          
+          
+              </div>
+            </div>
+          </div>
+        
           <Link href="/blogs" className="hover:text-teal-700">
             Blogs
           </Link>
@@ -185,12 +211,26 @@ export default function Header() {
                 </Link>
               </div>
             </details>
-            <Link href="/careers" onClick={() => setMobileOpen(false)}>
-              Careers
-            </Link>
-            <Link href="/news" onClick={() => setMobileOpen(false)}>
-              News
-            </Link>
+                   <details>
+              <summary className="cursor-pointer py-1 font-semibold">
+                News
+              </summary>
+              <div className="ml-4 mt-1 flex flex-col gap-1 text-slate-700">
+         <Link
+                  href="/news/events" onClick={() => setMobileOpen(false)}
+                  className="block px-4 py-2 text-sm hover:bg-teal-50 hover:text-teal-700"
+                >
+                  Events
+                </Link>
+                <Link
+                  href="/news/post" onClick={() => setMobileOpen(false)}
+                  className="block px-4 py-2 text-sm hover:bg-teal-50 hover:text-teal-700"
+                >
+                  Posts
+                </Link>
+              </div>
+            </details>
+       
             <Link href="/blogs" onClick={() => setMobileOpen(false)}>
               Blogs
             </Link>
