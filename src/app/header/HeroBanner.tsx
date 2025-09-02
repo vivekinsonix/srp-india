@@ -33,11 +33,11 @@ export default function HeroSection() {
         </div>
         <div className="rounded-2xl  bg-gradient-to-br from-teal-400 to-teal-800 p-6 shadow-2xl min-h-[280px] flex items-center justify-center text-center">
           <div>
-            <p className="text-sm uppercase tracking-widest text-teal-300">AI-enabled process improvements</p>
-            <h3 className="mt-2 text-xl font-semibold">
+            <p className="text-sm uppercase tracking-widest text-teal-200">AI-enabled process improvements</p>
+            <h3 className="mt-2 text-xl ">
              Check now if your business process qualifies for our newly launched <strong>Automation-first BPO operations that use AI + Human Hybrid Models</strong>
             </h3>
-            <p className="mt-3 text-slate-300">Built on Zoho One, RingCentral, Turvo, DAT.</p>
+            <p className="mt-3 text-teal-200"> logistics legal and compliance, Healthcare, Retail</p>
           </div>
         </div>
 
@@ -45,21 +45,21 @@ export default function HeroSection() {
               <div className="relative mx-auto max-w-7xl px-4 py-16 grid md:grid-cols-1  gap-12 items-center">
              <div className="mt-10 grid grid-col-3 lg:grid-cols-4 grid-col-2 gap-6 text-center md:text-left">
             <div className="rounded-2xl bg-slate-800/60 p-4 text-center">
-              <div className="text-2xl font-bold">80k+</div>
+              <div className="text-2xl font-bold">80000+</div>
               <div className="text-xs text-slate-300">Carrier support to deliver loads
 round-the-clock</div>
             </div>
             <div className="rounded-2xl bg-slate-800/60 p-4 text-center">
-              <div className="text-2xl font-bold">32k+</div>
+              <div className="text-2xl font-bold">32500+</div>
               <div className="text-xs text-slate-300">Logistics managed with utmost care and affection</div>
             </div>
             <div className="rounded-2xl bg-slate-800/60 p-4 text-center">
               <div className="text-2xl font-bold">550+</div>
-              <div className="text-xs text-slate-300">STeam strength to ensure 100% customer satisfaction</div>
+              <div className="text-xs text-slate-300">Team strength to ensure 100% customer satisfaction</div>
             </div>
                <div className="rounded-2xl bg-slate-800/60 p-4 text-center">
               <div className="text-2xl font-bold">99%</div>
-              <div className="text-xs text-slate-300">imely performance to upscale our services continuously</div>
+              <div className="text-xs text-slate-300">Timely performance to upscale our services continuously</div>
             </div>
           </div>
         </div>
