@@ -28,7 +28,7 @@ export default function Careers() {
           </p>
           <a
             className="mt-3 inline-block font-semibold text-teal-700 hover:underline"
-            href="/careers/openings/opening-qa-voice"
+            href="/careers/openings/opening-senior-bpo-agent"
           >
             View details →
           </a>
