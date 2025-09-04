@@ -2,18 +2,24 @@
 "use client";
 import Header from "../../header/page";
 import Footer from "../../footer/page";
+import HeroSection from "@/app/subheader/page";
 
 export default function Careers() {
   return (
      <>
        <div className="min-h-screen bg-white text-slate-800">
           <Header />
+                  <HeroSection
+                    backgroundImage="/hero-bg.jpg"
+                    eyebrow="SRP"
+                    title="Open"
+                    highlight="JPositions"
+                    description="We hire year-round for US logistics processes. Below are two sample roles."
+                    primaryAction={{ label: "Learn More", href: "/about" }}
+                    secondaryAction={{ label: "Contact Us", href: "/contact" }}
+                  />
   <main className="container mx-auto max-w-7xl px-4 py-10">
-      <h1 className="text-3xl font-semibold">Open Positions</h1>
-      <p className="mt-2 text-slate-600">
-        We hire year-round for US logistics processes. Below are two sample roles.
-      </p>
-
+     
       <div className="mt-6 grid gap-6 md:grid-cols-2">
         <article className="rounded-lg border border-slate-200 p-6 shadow-sm transition hover:shadow">
           <h2 className="text-lg font-semibold">
