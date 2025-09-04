@@ -9,6 +9,7 @@ import Header from "./header/page";
 import HeroSection from "./header/HeroBanner";
 import { CheckCircleIcon } from "lucide-react";
 import Footer from "./footer/page";
+import Link from "next/link";
 
 // ---- Mock Data (replace with CMS/API later) -------------------------------
 const JOBS = [
@@ -304,7 +305,7 @@ export default function SRPIndiaSite() {
                 <h3 className="text-lg font-semibold">{b.title}</h3>
                 <p className="text-xs text-slate-500">{b.date} • {b.author}</p>
                 <p className="mt-2 text-slate-700">{b.excerpt}</p>
-                <button className="mt-3 text-teal-700 font-semibold" onClick={() => setActiveBlog(b.slug)}>Open →</button>
+                <Link href="/blogs/post-founder-spotlight" className="mt-3 text-teal-700 font-semibold">Open →</Link>
               </article>
             ))}
           </div>

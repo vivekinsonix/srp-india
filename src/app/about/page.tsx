@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Header from "../header/page";
 import Footer from "../footer/page";
+import HeroSection from "../subheader/page";
 
 export default function AboutSRP() {
   const cards = [
@@ -30,12 +31,18 @@ export default function AboutSRP() {
     <>
     <div className="min-h-screen bg-white text-slate-800">
     <Header />
+      <HeroSection
+                    backgroundImage="/hero-bg.jpg"
+                    eyebrow="SRP"
+                    title="About"
+                    highlight="SRP"
+                    description="We connect US logistics demand with India’s talent. Our Mohali center supports brokerage,
+        dispatch, accounting, QA, HR, and IT for a solid US trucking & brokerage network."
+                    primaryAction={{ label: "Learn More", href: "/about" }}
+                    secondaryAction={{ label: "Contact Us", href: "/contact" }}
+                  />
     <main className="container mx-auto max-w-7xl  px-4 py-10">
-      <h1 className="text-3xl font-semibold">About SRP</h1>
-      <p className="mt-4 max-w-3xl text-lg text-gray-700">
-        We connect US logistics demand with India’s talent. Our Mohali center supports brokerage,
-        dispatch, accounting, QA, HR, and IT for a solid US trucking & brokerage network.
-      </p>
+ 
 
       <div className="mt-8 grid gap-6 md:grid-cols-2">
         {cards.map((card) => (

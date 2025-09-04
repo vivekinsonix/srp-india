@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Header from "../header/page";
 import Footer from "../footer/page";
+import HeroSection from "../subheader/page";
 
 export default function Blogs() {
 const posts = [
@@ -28,11 +29,16 @@ const posts = [
     <>
      <div className="min-h-screen bg-white text-slate-800">
         <Header />
+               <HeroSection
+                backgroundImage="/hero-bg.jpg"
+                eyebrow="Our Blogs"
+                title="Our "
+                highlight="Blogs"
+                description="Stories about careers, operations, and our journey."
+                primaryAction={{ label: "Learn More", href: "/about" }}
+                secondaryAction={{ label: "Contact Us", href: "/contact" }}
+              />
     <main className="container mx-auto max-w-7xl  px-4 py-10">
-      <h1 className="text-3xl font-semibold">Blogs</h1>
-      <p className="mt-2 text-slate-600 ">
-        Stories about careers, operations, and our journey.
-      </p>
 
       <div className="mt-6 grid gap-6 md:grid-cols-3">
         {posts.map((post) => (

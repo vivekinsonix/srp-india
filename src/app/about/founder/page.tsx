@@ -1,6 +1,7 @@
 
 import Header from "../../header/page";
 import Footer from "../../footer/page";
+import HeroSection from "@/app/subheader/page";
 
 export default function Founder() {
   
@@ -9,15 +10,17 @@ export default function Founder() {
     <>
     <div className="min-h-screen bg-white text-slate-800">
     <Header />
+            <HeroSection
+                            backgroundImage="/hero-bg.jpg"
+                            eyebrow="Founder"
+                            title="Founder  "
+                            highlight="Mr. Rajwinder Singh Boparai"
+                            description="From a handful of trucks to a robust US trucking & brokerage group—Mr. Boparai blends entrepreneurship with social commitment in Punjab.."
+                            primaryAction={{ label: "Learn More", href: "/about" }}
+                            secondaryAction={{ label: "Contact Us", href: "/contact" }}
+                          />
     <main className=" mx-auto max-w-7xl px-4 py-10">
-      <h1 className="text-3xl font-semibold">
-        Founder: Mr. Rajwinder Singh Boparai
-      </h1>
 
-      <p className="lead mt-4 max-w-3xl">
-        From a handful of trucks to a robust US trucking & brokerage group—Mr.
-        Boparai blends entrepreneurship with social commitment in Punjab.
-      </p>
 
       <div className="grid md:grid-cols-3 gap-6 mt-6">
         <div className="md:col-span-2 prose max-w-none">

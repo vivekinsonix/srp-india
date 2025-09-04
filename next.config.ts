@@ -8,6 +8,9 @@ const nextConfig: NextConfig = {
     // your project has ESLint errors.
     ignoreDuringBuilds: true,
   },
+   images: {
+    unoptimized: true,   // ✅ disables optimization
+  },
 };
 
 export default nextConfig;
