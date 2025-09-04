@@ -4,6 +4,7 @@
 import { useState, ChangeEvent, FormEvent } from "react";
 import Header from "../header/page";
 import Footer from "../footer/page";
+import HeroSection from "../subheader/page";
 
 export default function Suppliers() {
   const [form, setForm] = useState({
@@ -29,13 +30,19 @@ export default function Suppliers() {
     <>
       <div className="min-h-screen bg-white text-slate-800">
         <Header />
-        <main className="container mx-auto max-w-7xl px-4 py-10">
-          <h1 className="text-3xl font-semibold">Suppliers</h1>
-          <p className="mt-4 max-w-3xl text-lg text-gray-700">
-            If you provide services or products relevant to call center operations, IT, or
+               <HeroSection
+                backgroundImage="/hero-bg.jpg"
+                eyebrow="Suppliers"
+                title="Suppliers"
+                highlight=" - services or products"
+                description="If you provide services or products relevant to call center operations, IT, or
             facilities, introduce your company here. We proactively shortlist vendors for
-            quarterly sourcing.
-          </p>
+            quarterly sourcing."
+                primaryAction={{ label: "Learn More", href: "/about" }}
+                secondaryAction={{ label: "Contact Us", href: "/contact" }}
+              />
+        <main className="container mx-auto max-w-7xl px-4 py-10">
+  
           <form
             onSubmit={handleSubmit}
             className="mt-6 grid gap-4 rounded-xl border border-gray-200 bg-white p-6 shadow-sm md:grid-cols-2"
