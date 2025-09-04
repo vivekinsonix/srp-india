@@ -13,7 +13,7 @@ export default function Careers() {
                     backgroundImage="/hero-bg.jpg"
                     eyebrow="SRP"
                     title="Open"
-                    highlight="JPositions"
+                    highlight="Positions"
                     description="We hire year-round for US logistics processes. Below are two sample roles."
                     primaryAction={{ label: "Learn More", href: "/about" }}
                     secondaryAction={{ label: "Contact Us", href: "/contact" }}
