@@ -2,6 +2,7 @@
 "use client";
 import Header from "../../header/page";
 import Footer from "../../footer/page";
+import HeroSection from "@/app/subheader/page";
 export default function PostsPage() {
   const posts = [
     {
@@ -28,33 +29,42 @@ export default function PostsPage() {
   ];
 
   return (
-          <>
-           <div className="min-h-screen bg-white text-slate-800">
-              <Header />
-      <main className="container mx-auto max-w-7xl px-4 py-10">
-      <h1 className="text-3xl font-semibold">Posts</h1>
+    <>
+      <div className="min-h-screen bg-white text-slate-800">
+        <Header />
+        <HeroSection
+          backgroundImage="/hero-bg.jpg"
+          eyebrow="Posts"
+          title="Posts"
+          highlight=""
+          description="Company posts, event recaps, a downloadable media library, and a media relations contact point for interviews and campus visits."
+          primaryAction={{ label: "Learn More", href: "/about" }}
+          secondaryAction={{ label: "Contact Us", href: "/contact" }}
+        />
+        <main className="container mx-auto max-w-7xl px-4 py-10">
 
-      <div className="mt-6 grid gap-6 md:grid-cols-3">
-        {posts.map((post, idx) => (
-          <article
-            key={idx}
-            className="rounded-xl border border-slate-200 p-6 shadow-sm transition hover:shadow-md"
-          >
-            <h2 className="text-lg font-semibold">{post.title}</h2>
-            <p className="mt-1 text-xs text-slate-500">{post.meta}</p>
-            <p className="mt-2 text-slate-700">{post.desc}</p>
-            <a
-              href={post.link}
-              className="mt-3 inline-block font-semibold text-teal-700 hover:underline"
-            >
-              {post.cta}
-            </a>
-          </article>
-        ))}
+
+          <div className="mt-6 grid gap-6 md:grid-cols-3">
+            {posts.map((post, idx) => (
+              <article
+                key={idx}
+                className="rounded-xl border border-slate-200 p-6 shadow-sm transition hover:shadow-md"
+              >
+                <h2 className="text-lg font-semibold">{post.title}</h2>
+                <p className="mt-1 text-xs text-slate-500">{post.meta}</p>
+                <p className="mt-2 text-slate-700">{post.desc}</p>
+                <a
+                  href={post.link}
+                  className="mt-3 inline-block font-semibold text-teal-700 hover:underline"
+                >
+                  {post.cta}
+                </a>
+              </article>
+            ))}
+          </div>
+        </main>
       </div>
-   </main>
-           </div>
-             <Footer />
-             </>
+      <Footer />
+    </>
   );
 }

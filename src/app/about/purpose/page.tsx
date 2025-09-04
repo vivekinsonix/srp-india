@@ -58,7 +58,7 @@ export default function PurposeContent() {
       </div>
 
       {/* Topic Cards */}
-      <div className="grid grid-cols-2 gap-8">
+      <div className="grid grid-col-1 lg:grid-cols-2 gap-8">
         {topics.map(({ id, title, description }) => (
           <div
             key={id}
