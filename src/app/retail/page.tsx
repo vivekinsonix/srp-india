@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { MapPin, ChevronRight, CheckCircle2, Sparkles, Building2, ShoppingCart, Package, Shirt, HeartPulse, MonitorSmartphone, LineChart, Rocket, Users, Layers, Cpu, Bot, BarChart3, ShieldCheck } from "lucide-react";
+import { MapPin, ChevronRight, CheckCircle2, Sparkles, Building2, ShoppingCart, Package, Shirt, HeartPulse, MonitorSmartphone, LineChart, Rocket, Users, Layers, Cpu, Bot, BarChart3, ShieldCheck, MailCheck } from "lucide-react";
 import Header from "@/app/header/page";
 import Footer from "@/app/footer/page";
 
@@ -405,9 +405,9 @@ function Contact({ id }: { id?: string }) {
               Tell us a bit about your challenge. Our retail specialists will get back within one business day.
             </p>
             <ul className="mt-6 space-y-3">
-              <li className="flex items-start gap-3"><MapPin className="size-5 mt-0.5" /> Global delivery across US, UK, EU & APAC</li>
-              <li className="flex items-start gap-3"><CheckCircle2 className="size-5 mt-0.5" /> Fortune 500 & FTSE 100 trusted partner</li>
-              <li className="flex items-start gap-3"><LineChart className="size-5 mt-0.5" /> Outcome‑linked commercial models</li>
+              <li className="flex items-start gap-3"><MapPin className="size-5 mt-0.5" />India HQ (Mohali)</li>
+              <li className="flex items-start gap-3"><CheckCircle2 className="size-5 mt-0.5" />Plot No. 605, Industrial Area Phase 9, SAS Nagar, Punjab 160062</li>
+              <li className="flex items-start gap-3"><MailCheck className="size-5 mt-0.5" /> Email: info@srpuslogistics.com</li>
             </ul>
           </div>
 
@@ -419,7 +419,7 @@ function Contact({ id }: { id?: string }) {
                   value={state.name}
                   onChange={(e) => setState({ ...state, name: e.target.value })}
              className="rounded-xl border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500"
-                  placeholder="Jane Doe"
+                  placeholder="Vivek sharma"
                 />
               </Field>
               <Field label="Work email" required>
@@ -429,7 +429,7 @@ function Contact({ id }: { id?: string }) {
                   value={state.email}
                   onChange={(e) => setState({ ...state, email: e.target.value })}
               className="rounded-xl border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500"
-                  placeholder="jane@company.com"
+                  placeholder="vs@company.com"
                 />
               </Field>
          </div>
@@ -445,20 +445,20 @@ function Contact({ id }: { id?: string }) {
               </Field>
             </div>
            </div>
-                  <div className="grid md:grid-cols-2 gap-4">
+                  <div className="grid md:grid-cols-1 gap-4">
             <div className="mt-4">
               <Field label="How can we help?">
                 <textarea
                   value={state.message}
                   onChange={(e) => setState({ ...state, message: e.target.value })}
-                  className="rounded-xl border px-3 py-2 min-h-32 focus:outline-none focus:ring-2 focus:ring-teal-500"
+                  className="rounded-xl border px-3 w-full py-2 min-h-32 focus:outline-none focus:ring-2 focus:ring-teal-500"
                   placeholder="Briefly describe your goals or pain points"
                 />
               </Field>
             </div>
           </div>
             {!submitted ? (
-              <button type="submit" className="mt-6 w-full rounded-2xl bg-teal-600 hover:bg-teal-700 text-white px-5 py-3 font-medium">
+              <button type="submit" className="mt-6 w-full cursor-pointer rounded-2xl bg-teal-600 hover:bg-teal-700 text-white px-5 py-3 font-medium">
                 Submit
               </button>
             ) : (

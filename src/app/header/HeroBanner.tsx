@@ -37,7 +37,10 @@ export default function HeroSection() {
             <h3 className="mt-2 text-xl ">
              Check now if your business process qualifies for our newly launched <strong>Automation-first BPO operations that use AI + Human Hybrid Models</strong>
             </h3>
-            <p className="mt-3 text-teal-200"> logistics, Healthcare, Retail, Legal and Compliance</p>
+            <p className="my-3 text-teal-200"> logistics, Healthcare, Retail, Legal and Compliance</p>
+              <a href="/retail" className="rounded-xl  mt-3 inline-block border hover:bg-teal-600 border-white/20 px-4 py-2">
+             Learn More
+            </a>
           </div>
         </div>
 
