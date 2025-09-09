@@ -5,10 +5,10 @@
 
 import Head from "next/head";
 import React, { useMemo, useState } from "react";
-import Header from "./header/page";
-import HeroSection from "./header/HeroBanner";
+import Header from "../components/header/Header";
+import HeroSection from "../components/header/HeroBanner";
 import { CheckCircleIcon } from "lucide-react";
-import Footer from "./footer/page";
+import Footer from "../components/footer/Footer";
 import Link from "next/link";
 
 // ---- Mock Data (replace with CMS/API later) -------------------------------
