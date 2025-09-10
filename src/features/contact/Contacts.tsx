@@ -6,7 +6,7 @@ import Header from '@/components/header/Header';
 import HeroSection from '@/components/subheader/AppHeroSection';
 import Footer from '@/components/footer/Footer';
 
-export default function Contact() {
+export default function Contacts() {
   const [email, setEmail] = useState('');
 
   const handleSubscribe = () => {
