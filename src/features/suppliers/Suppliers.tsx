@@ -2,9 +2,9 @@
 "use client";
 
 import { useState, ChangeEvent, FormEvent } from "react";
-import Header from "../header/Header";
-import Footer from "../footer/Footer";
-import HeroSection from "../subheader/AppHeroSection";
+import Header from "../../components/header/Header";
+import Footer from "../../components/footer/Footer";
+import HeroSection from "../../components/subheader/AppHeroSection";
 
 export default function Suppliers() {
   const [form, setForm] = useState({
