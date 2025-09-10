@@ -2,7 +2,7 @@
 "use client";
 import Header from "../../../../components/header/Header";
 import Footer from "../../../../components/footer/Footer";
-export default function QAVoiceOpening() {
+export default function QASeniorBpoAgent() {
   return (
      <>
        <div className="min-h-screen bg-white text-slate-800">

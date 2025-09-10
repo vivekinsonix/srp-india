@@ -3,7 +3,7 @@ import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import HeroSection from "../../components/subheader/AppHeroSection";
 
-export default function Careers() {
+export default function News() {
   const items = [
     {
       title: "Posts",
