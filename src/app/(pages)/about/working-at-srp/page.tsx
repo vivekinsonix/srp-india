@@ -1,8 +1,7 @@
 // app/working-at-srp/page.tsx (Next.js App Router)
 
-import Header from "../../../components/header/Header";
-import Footer from "../../../components/footer/Footer";
-import HeroSection from "@/app/components/subheader/AppHeroSection";
+import HeroSection from '@/app/components/subheader/AppHeroSection';
+import Header from '../../../components/header/Header';
 
 export default function WorkingAtSRPPage() {
   return (
@@ -17,11 +16,10 @@ export default function WorkingAtSRPPage() {
           description="We’re an India operations hub for a US group. The work is fast,
             structured, and rewarding—made for experienced BPO talent that wants
             real impact."
-          primaryAction={{ label: "Learn More", href: "/about" }}
-          secondaryAction={{ label: "Contact Us", href: "/contact" }}
+          primaryAction={{ label: 'Learn More', href: '/about' }}
+          secondaryAction={{ label: 'Contact Us', href: '/contact' }}
         />
         <main className=" mx-auto max-w-7xl px-4 py-10">
-     
           <div className="grid md:grid-cols-3 gap-6 mt-6">
             {/* How we work */}
             <div className="rounded-xl border bg-white p-6 shadow-sm hover:shadow-md transition">
@@ -46,16 +44,11 @@ export default function WorkingAtSRPPage() {
             {/* Tools */}
             <div className="rounded-xl border bg-white p-6 shadow-sm hover:shadow-md transition">
               <h3 className="font-semibold text-lg">Tools</h3>
-              <p className="mt-2 text-sm text-slate-700">
-                Zoho One (CRM/HR), RingCentral (voice QA), Turvo (TMS), DAT (freight
-                sourcing).
-              </p>
+              <p className="mt-2 text-sm text-slate-700">Zoho One (CRM/HR), RingCentral (voice QA), Turvo (TMS), DAT (freight sourcing).</p>
             </div>
           </div>
         </main>
-
       </div>
-      <Footer />
     </>
   );
 }

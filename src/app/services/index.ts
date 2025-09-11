@@ -2,3 +2,4 @@
 export * from "./blogService";
 export * from "./eventService";
 export * from "./jobService";
+export * from "./SpinnerService"

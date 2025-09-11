@@ -4,7 +4,6 @@ import { useState } from 'react';
 // Update the import path below if the Header component is located elsewhere
 import Header from '@/app/components/header/Header';
 import HeroSection from '@/app/components/subheader/AppHeroSection';
-import Footer from '@/app/components/footer/Footer';
 
 export default function Contacts() {
   const [email, setEmail] = useState('');
@@ -65,7 +64,6 @@ export default function Contacts() {
           </div>
         </main>
       </div>
-      <Footer />
     </>
   );
 }

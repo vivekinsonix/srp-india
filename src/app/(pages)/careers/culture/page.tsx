@@ -1,8 +1,7 @@
 // app/our-culture/page.tsx
-"use client";
-import Header from "../../../components/header/Header";
-import Footer from "../../../components/footer/Footer";
-import HeroSection from "@/app/components/subheader/AppHeroSection";
+'use client';
+import HeroSection from '@/app/components/subheader/AppHeroSection';
+import Header from '../../../components/header/Header';
 export default function OurCulture() {
   return (
     <>
@@ -15,11 +14,11 @@ export default function OurCulture() {
           highlight="Culture"
           description="We prioritize clarity, fairness, and ownership. Teams are small, expectations
             are explicit, and leaders coach continuously."
-          primaryAction={{ label: "Learn More", href: "/about" }}
-          secondaryAction={{ label: "Contact Us", href: "/contact" }}
+          primaryAction={{ label: 'Learn More', href: '/about' }}
+          secondaryAction={{ label: 'Contact Us', href: '/contact' }}
         />
         <main className="container mx-auto max-w-7xl px-4 py-10">
-                   <div className="prose mt-6 max-w-none text-gray-700 dark:prose-invert">
+          <div className="prose mt-6 max-w-none text-gray-700 dark:prose-invert">
             <h2>Principles</h2>
             <ul>
               <li>
@@ -35,15 +34,10 @@ export default function OurCulture() {
           </div>
           <div className="prose mt-6 max-w-none text-gray-700 dark:prose-invert">
             <h2>Routines</h2>
-            <p>
-              Daily standups, weekly QA reviews, monthly skills clinics. Recognition is
-              public and specific.
-            </p>
+            <p>Daily standups, weekly QA reviews, monthly skills clinics. Recognition is public and specific.</p>
           </div>
         </main>
       </div>
-
-      <Footer />
     </>
   );
 }
