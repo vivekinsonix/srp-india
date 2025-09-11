@@ -4,11 +4,9 @@ import { getBlogs } from '@/app/services';
 import SpinnerService from '@/app/services/SpinnerService';
 import { formatDate, truncateContent } from '@/app/utils/utility';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
-import Footer from '../../components/footer/Footer';
-import Header from '../../components/header/Header';
-import HeroSection from '../../components/subheader/AppHeroSection';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import HeroSection from '../../components/subheader/AppHeroSection';
 interface Seo {
   id: number;
   metaTitle: string;
@@ -51,14 +49,13 @@ export default function Blogs() {
         console.log(error);
       })
       .finally(() => {
-        SpinnerService.hodeSpinner();
+        SpinnerService.hideSpinner();
       });
   }, []);
 
   return (
     <>
       <div className="min-h-screen bg-white text-slate-800">
-        <Header />
         <HeroSection backgroundImage="/hero-bg.jpg" eyebrow="Our Blogs" title="Our Blogs" description="Stories about careers, operations, and our journey." primaryAction={{ label: 'Learn More', href: '/about' }} secondaryAction={{ label: 'Contact Us', href: '/contact' }} />
         <main className="container mx-auto max-w-7xl px-4 py-10">
           <div className="mt-6 grid gap-6 md:grid-cols-3">
@@ -70,10 +67,10 @@ export default function Blogs() {
                   <p className="text-xs text-slate-500">{formatDate(post?.publishedAt)}</p>
                   <p className="text-xs text-slate-500">{post.author}</p>
                   <RichTextRenderer content={truncateContent(post.content)} />
+                  <Link href={`/blogs/${post.id}`} className="text-blue-600 hover:underline hover:text-blue-800">
+                    Read More..
+                  </Link>
                 </div>
-                <Link href={`/blogs/${post.id}`} className="inline rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700">
-                  Read More →
-                </Link>
               </article>
             ))}
           </div>

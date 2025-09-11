@@ -1,12 +1,10 @@
 'use client';
-import Header from '@/app/components/header/Header';
 import { BarChart3, Bot, Building2, CheckCircle2, ChevronRight, Cpu, HeartPulse, Layers, MailCheck, MapPin, MonitorSmartphone, Package, Rocket, ShieldCheck, Shirt, ShoppingCart, Sparkles, Users } from 'lucide-react';
 import { useState } from 'react';
 
 export default function RetailPage() {
   return (
     <div className="min-h-screen bg-white text-slate-900">
-      <Header />
 
       <Hero />
       <InPageNav />

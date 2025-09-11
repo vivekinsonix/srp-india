@@ -1,11 +1,9 @@
 import HeroSection from '@/app/components/subheader/AppHeroSection';
-import Header from '../../../components/header/Header';
 
 export default function Founder() {
   return (
     <>
       <div className="min-h-screen bg-white text-slate-800">
-        <Header />
         <HeroSection backgroundImage="/hero-bg.jpg" eyebrow="Founder" title="Founder  " highlight="Mr. Rajwinder Singh Boparai" description="From a handful of trucks to a robust US trucking & brokerage group—Mr. Boparai blends entrepreneurship with social commitment in Punjab.." primaryAction={{ label: 'Learn More', href: '/about' }} secondaryAction={{ label: 'Contact Us', href: '/contact' }} />
         <main className=" mx-auto max-w-7xl px-4 py-10">
           <div className="grid md:grid-cols-3 gap-6 mt-6">

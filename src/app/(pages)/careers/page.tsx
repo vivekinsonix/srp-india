@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Header from '../../components/header/Header';
 import HeroSection from '../../components/subheader/AppHeroSection';
 
 export default function Careers() {
@@ -24,7 +23,6 @@ export default function Careers() {
   return (
     <>
       <div className="min-h-screen bg-white text-slate-800">
-        <Header />
         <HeroSection backgroundImage="/hero-bg.jpg" eyebrow="Careers" title="Careers" highlight="Join a team " description="Join a team that blends US-grade process rigor with Indian ingenuity. We’re hiring experienced BPO/logistics professionals who want to lead outcomes, not just tasks." primaryAction={{ label: 'Learn More', href: '/about' }} secondaryAction={{ label: 'Contact Us', href: '/contact' }} />
         <main className="container mx-auto max-w-7xl px-4 py-10">
           <ul className="mt-6 grid gap-4 md:grid-cols-3">

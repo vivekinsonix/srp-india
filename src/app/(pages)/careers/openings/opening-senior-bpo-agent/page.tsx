@@ -1,11 +1,9 @@
 // app/careers/opening-qa-voice/page.tsx
 'use client';
-import Header from '../../../../components/header/Header';
 export default function QASeniorBpoAgent() {
   return (
     <>
       <div className="min-h-screen bg-white text-slate-800">
-        <Header />
         <main className="container mx-auto max-w-7xl px-4 py-10">
           <h1 className="text-3xl font-semibold">Senior BPO Agent – US Logistics</h1>
           <p className="mt-1 text-sm text-slate-600">Mohali, Punjab (On-site) • 2–4 years</p>

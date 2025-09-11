@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Header from '../../components/header/Header';
 import HeroSection from '../../components/subheader/AppHeroSection';
 
 export default function News() {
@@ -31,7 +30,6 @@ export default function News() {
   return (
     <>
       <div className="min-h-screen bg-white text-slate-800">
-        <Header />
         <HeroSection backgroundImage="/hero-bg.jpg" eyebrow="Our News" title="Our " highlight="Newsroom" description="Company posts, event recaps, a downloadable media library, and a media relations contact point for interviews and campus visits." primaryAction={{ label: 'Learn More', href: '/about' }} secondaryAction={{ label: 'Contact Us', href: '/contact' }} />
         <main className="container  mx-auto max-w-7xl px-4 py-10">
           <ul className="mt-6 grid gap-4 md:grid-cols-4">

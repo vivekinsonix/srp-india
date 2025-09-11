@@ -1,5 +1,4 @@
 // components/PurposeContent.js
-import Header from '@/app/components/header/Header';
 import HeroSection from '@/app/components/subheader/AppHeroSection';
 
 const topics = [
@@ -29,7 +28,6 @@ const topics = [
 export default function PurposeContent() {
   return (
     <div className="min-h-screen bg-white text-slate-900">
-      <Header />
       <HeroSection backgroundImage="/hero-bg.jpg" eyebrow="Our Purpose" title="Helping people" highlight="live better" description="Through innovation, sustainability, and a focus on our communities, we aim to improve lives around the world." primaryAction={{ label: 'Learn More', href: '/about' }} secondaryAction={{ label: 'Contact Us', href: '/contact' }} />
       <section className="max-w-7xl mx-auto px-4 py-16">
         {/* Hero Section */}

@@ -1,13 +1,11 @@
 // app/working-at-srp/page.tsx (Next.js App Router)
 
 import HeroSection from '@/app/components/subheader/AppHeroSection';
-import Header from '../../../components/header/Header';
 
 export default function WorkingAtSRPPage() {
   return (
     <>
       <div className="min-h-screen bg-white text-slate-800">
-        <Header />
         <HeroSection
           backgroundImage="/hero-bg.jpg"
           eyebrow="SRP"

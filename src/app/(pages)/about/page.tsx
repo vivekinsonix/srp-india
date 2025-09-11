@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Header from '../../components/header/Header';
 import HeroSection from '../../components/subheader/AppHeroSection';
 
 export default function AboutSRP() {
@@ -29,7 +28,6 @@ export default function AboutSRP() {
   return (
     <>
       <div className="min-h-screen bg-white text-slate-800">
-        <Header />
         <HeroSection
           backgroundImage="/hero-bg.jpg"
           eyebrow="SRP"

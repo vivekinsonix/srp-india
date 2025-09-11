@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 // Update the import path below if the Header component is located elsewhere
-import Header from '@/app/components/header/Header';
 import HeroSection from '@/app/components/subheader/AppHeroSection';
 
 export default function Contacts() {
@@ -18,7 +17,6 @@ export default function Contacts() {
   return (
     <>
       <div className="min-h-screen bg-white text-slate-800">
-        <Header />
         <HeroSection backgroundImage="/hero-bg.jpg" eyebrow="Contact" title="Contact " highlight="Us" description="If Any Query , Reach us Any Time" primaryAction={{ label: 'Learn More', href: '/about' }} secondaryAction={{ label: 'Contact Us', href: '/contact' }} />
         <main className="container mx-auto max-w-7xl px-4 py-10">
           <h1 className="text-3xl font-semibold">Contact</h1>

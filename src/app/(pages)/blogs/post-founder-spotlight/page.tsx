@@ -1,11 +1,9 @@
 // app/blogs/post-founder-spotlight/page.tsx
 'use client';
-import Header from '../../../components/header/Header';
 export default function blogContent() {
   return (
     <>
       <div className="min-h-screen bg-white text-slate-800">
-        <Header />
         <main className="container mx-auto max-w-7xl  px-4 py-10">
           <h1 className="text-3xl font-semibold">Founder Spotlight: Rajwinder Singh Boparai</h1>
           <p className="mt-1 text-sm text-slate-500">Aug 28, 2025 • SRP Editorial</p>

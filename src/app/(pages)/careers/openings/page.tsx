@@ -1,13 +1,11 @@
 // app/careers/page.tsx
 'use client';
 import HeroSection from '@/app/components/subheader/AppHeroSection';
-import Header from '../../../components/header/Header';
 
 export default function Openings() {
   return (
     <>
       <div className="min-h-screen bg-white text-slate-800">
-        <Header />
         <HeroSection backgroundImage="/hero-bg.jpg" eyebrow="SRP" title="Open" highlight="Positions" description="We hire year-round for US logistics processes. Below are two sample roles." primaryAction={{ label: 'Learn More', href: '/about' }} secondaryAction={{ label: 'Contact Us', href: '/contact' }} />
         <main className="container mx-auto max-w-7xl px-4 py-10">
           <div className="mt-6 grid gap-6 md:grid-cols-2">

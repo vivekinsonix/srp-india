@@ -2,7 +2,7 @@
 import { apiClient } from './apiService';
 
 export function getEvents() {
-  return apiClient.get("/events?populate=*").then((res) => res.data);
+  return apiClient.get("/events?populate=Seo&&populate=gallery").then((res) => res.data);
 }
 
 export function getEvent(id: string | number) {

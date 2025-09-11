@@ -13,7 +13,7 @@ class SpinnerService {
     }
   }
 
-  static hodeSpinner() {
+  static hideSpinner() {
     if (SpinnerService.callback) {
       SpinnerService.callback(false);
     } else {

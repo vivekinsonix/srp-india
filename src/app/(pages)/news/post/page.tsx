@@ -1,7 +1,6 @@
 // app/posts/page.tsx
 'use client';
 import HeroSection from '@/app/components/subheader/AppHeroSection';
-import Header from '../../../components/header/Header';
 export default function PostsPage() {
   const posts = [
     {
@@ -30,7 +29,6 @@ export default function PostsPage() {
   return (
     <>
       <div className="min-h-screen bg-white text-slate-800">
-        <Header />
         <HeroSection backgroundImage="/hero-bg.jpg" eyebrow="Posts" title="Posts" highlight="" description="Company posts, event recaps, a downloadable media library, and a media relations contact point for interviews and campus visits." primaryAction={{ label: 'Learn More', href: '/about' }} secondaryAction={{ label: 'Contact Us', href: '/contact' }} />
         <main className="container mx-auto max-w-7xl px-4 py-10">
           <div className="mt-6 grid gap-6 md:grid-cols-3">
