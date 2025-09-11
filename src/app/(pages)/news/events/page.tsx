@@ -3,6 +3,7 @@
 import HeroSection from '@/app/components/subheader/AppHeroSection';
 import { getEvents } from '@/app/services';
 import SpinnerService from '@/app/services/SpinnerService';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 interface EventGallery {
@@ -44,9 +45,9 @@ export default function EventsPage() {
                 <div className="text-xs text-slate-500">{e.date}</div>
                 <h2 className="text-lg font-semibold mt-1">{e.title}</h2>
                 <p className="mt-2 text-slate-700">{e.summary}</p>
-                <a className="mt-3 inline-block font-semibold text-teal-700 hover:underline" href={`/events/${e.id}`}>
+                <Link className="mt-3 inline-block font-semibold text-teal-700 hover:underline" href={`/news/events/${e.id}`}>
                   read more
-                </a>
+                </Link>
               </article>
             ))}
           </div>

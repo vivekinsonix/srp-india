@@ -4,10 +4,15 @@
 'use client';
 
 import { CheckCircleIcon } from 'lucide-react';
-import Link from 'next/link';
-import React, { useMemo, useState } from 'react';
+import Image from 'next/image';
+import React, { useEffect, useMemo, useState } from 'react';
 import Footer from '../components/footer/Footer';
 import HeroSection from '../components/header/HeroBanner';
+import RichTextRenderer from '../components/RichText/RichTextHandler';
+import { getPaginatedBlogs } from '../services';
+import SpinnerService from '../services/SpinnerService';
+import { formatDate, truncateContent } from '../utils/utility';
+import Link from 'next/link';
 
 // ---- Mock Data (replace with CMS/API later) -------------------------------
 const JOBS = [
@@ -64,18 +69,54 @@ const Section = ({ id, title, children, muted }: any) => (
   </section>
 );
 
+interface Seo {
+  id: number;
+  metaTitle: string;
+  metaDescription: string;
+  keywords: string;
+  metaRobots: string | null;
+  metaViewport: string | null;
+  canonicalURL: string | null;
+  structuredData: string | null;
+}
+
+interface BlogPost {
+  id: number;
+  documentId: string;
+  title: string;
+  slug: string;
+  excerpt: string | null;
+  content: string;
+  author: string;
+  tags: string[] | null;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  coverImage: {
+    url: string;
+  };
+  Seo: Seo;
+}
+
 // ---- Main Page ------------------------------------------------------------
 export default function SRPIndiaSite() {
   const [activeBlog, setActiveBlog] = useState<string | null>(null);
   const [jobQuery, setJobQuery] = useState('');
+  const [blogs, setBlogs] = useState<BlogPost[]>([]);
+
+  useEffect(() => {
+    SpinnerService.showSpinner();
+    getPaginatedBlogs(1, 3)
+      .then((e) => setBlogs(e.data))
+      .catch((e) => console.log(e))
+      .finally(() => SpinnerService.hideSpinner());
+  }, []);
 
   const filteredJobs = useMemo(() => {
     if (!jobQuery) return JOBS;
     const q = jobQuery.toLowerCase();
     return JOBS.filter((j) => j.title.toLowerCase().includes(q) || j.tags.join(' ').toLowerCase().includes(q));
   }, [jobQuery]);
-
-  const blog = useMemo(() => BLOGS.find((b) => b.slug === activeBlog) || null, [activeBlog]);
 
   return (
     <div className="min-h-screen bg-white text-slate-800">
@@ -211,35 +252,34 @@ export default function SRPIndiaSite() {
         </div>
       </Section>
 
-      {/* Blog List + Template viewer */}
-      <Section id="blog" title="Blog & Stories" muted>
-        {!blog ? (
-          <div className="grid md:grid-cols-3 gap-6">
-            {BLOGS.map((b) => (
-              <article key={b.slug} className="rounded-2xl border p-5 hover:shadow">
-                <h3 className="text-lg font-semibold">{b.title}</h3>
-                <p className="text-xs text-slate-500">
-                  {b.date} • {b.author}
-                </p>
-                <p className="mt-2 text-slate-700">{b.excerpt}</p>
-                <Link href="/blogs/post-founder-spotlight" className="mt-3 text-teal-700 font-semibold">
-                  Open →
-                </Link>
-              </article>
-            ))}
+      <Section
+        id="blog"
+        muted
+        title={
+          <div className="flex items-center justify-between">
+            <h2 className="text-2xl font-bold">Blog & Stories</h2>
+            <Link href="/blogs" className="text-sm font-medium text-teal-700 hover:underline">
+              View All →
+            </Link>
           </div>
-        ) : (
-          <article className="prose max-w-none">
-            <button className="mb-4 text-teal-700" onClick={() => setActiveBlog(null)}>
-              ← Back to all posts
-            </button>
-            <h1>{blog.title}</h1>
-            <p className="text-sm text-slate-500">
-              {blog.date} • {blog.author}
-            </p>
-            <Markdown content={blog.content} />
-          </article>
-        )}
+        }
+      >
+        <div className="grid md:grid-cols-3 gap-6">
+          {blogs.map((b) => (
+            <article key={b.slug} className="rounded-2xl border p-5 hover:shadow">
+              <Image src={b?.coverImage?.url} alt={b.title} width={600} height={400} className="h-48 w-full object-cover" />
+              <h3 className="text-lg font-semibold">{b.title}</h3>
+              <p className="text-xs text-slate-500">
+                {formatDate(b?.publishedAt)} • {b.author}
+              </p>
+              <p className="mt-2 text-slate-700">{b.excerpt}</p>
+              <RichTextRenderer content={truncateContent(b.content)} />
+              <Link href="/blogs/post-founder-spotlight" className="mt-3 text-teal-700 font-semibold">
+                Open →
+              </Link>
+            </article>
+          ))}
+        </div>
       </Section>
 
       {/* Contact / Footer */}
