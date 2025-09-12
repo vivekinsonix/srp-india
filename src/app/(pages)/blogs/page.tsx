@@ -67,7 +67,7 @@ export default function Blogs() {
                   <p className="text-xs text-slate-500">{formatDate(post?.publishedAt)}</p>
                   <p className="text-xs text-slate-500">{post.author}</p>
                   <RichTextRenderer content={truncateContent(post.content)} />
-                  <Link href={`/blogs/${post.id}`} className="text-blue-600 hover:underline hover:text-blue-800">
+                  <Link href={`/blogs/details${post.id}`} className="text-blue-600 hover:underline hover:text-blue-800">
                     Read More..
                   </Link>
                 </div>

@@ -274,7 +274,7 @@ export default function SRPIndiaSite() {
               </p>
               <p className="mt-2 text-slate-700">{b.excerpt}</p>
               <RichTextRenderer content={truncateContent(b.content)} />
-              <Link href="/blogs/post-founder-spotlight" className="mt-3 text-teal-700 font-semibold">
+              <Link href={`/blogs/details`} className="mt-3 text-teal-700 font-semibold">
                 Open →
               </Link>
             </article>
@@ -307,7 +307,6 @@ export default function SRPIndiaSite() {
           </div>
         </div>
       </Section>
-      <Footer />
     </div>
   );
 }

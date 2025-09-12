@@ -1,5 +1,7 @@
 // app/blogs/post-founder-spotlight/page.tsx
 'use client';
+
+
 export default function blogContent() {
   return (
     <>
