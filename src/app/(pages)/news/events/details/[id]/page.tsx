@@ -4,7 +4,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 
 export async function generateStaticParams() {
-  const event = await getEvents();
+  const event = await getEvents() || [];
   return event?.data?.map((b: any) => ({
     id: b.attributes?.slug || b.slug,
   }));

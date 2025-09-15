@@ -2,7 +2,7 @@ import { apiClient } from './apiService';
 
 
 export function getOpenings() {
-  return apiClient.get("/job-openings?populate=*").then((res) => res.data);
+  return apiClient.get("/job-openings?createdAt:desc&&populate=*").then((res) => res.data);
 }
 
 export function getPaginatedOpenings(pageno=1, records=10) {
@@ -15,5 +15,11 @@ export function getOpening(id: string | number) {
 
 export function createApplication(data: unknown) {
   return apiClient.post("/job-applications", { data }).then((res) => res.data);
+}
+
+export function getOpeningBySlug(slug: string) {
+  return apiClient.get(`/job-openings?filters[slug][$eq]=${slug}&populate=*`).then((res) => {
+    return res.data.data[0];
+  });
 }
 

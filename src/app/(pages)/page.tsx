@@ -11,12 +11,11 @@ import Link from 'next/link';
 import React, { useEffect, useMemo, useState } from 'react';
 import HeroSection from '../components/header/HeroBanner';
 import RichTextRenderer from '../components/RichText/RichTextHandler';
-import { getBlogs, getPaginatedEvent } from '../services';
+import { getBlogs, getPaginatedEvent, getPaginatedOpenings } from '../services';
 import SpinnerService from '../services/SpinnerService';
-import { BlogPost, Events } from '../utils/interfaces';
+import { BlogPost, Events, Job } from '../utils/interfaces';
 import { formatDate, truncateContent } from '../utils/utility';
 
-// ---- Mock Data (replace with CMS/API later) -------------------------------
 const JOBS = [
   {
     id: 'senior-bpo-agent',
@@ -56,6 +55,7 @@ export default function SRPIndiaSite() {
   const [jobQuery, setJobQuery] = useState('');
   const [blogs, setBlogs] = useState<BlogPost[]>([]);
   const [events, setEvents] = useState<Events[]>([]);
+  const [jobs, setJobs] = useState<Job[]>([]);
   const mainBlog = blogs.find((b) => b.is_main === true);
 
   const otherBlogs = useMemo(() => blogs.filter((b) => !b.is_main), [blogs]);
@@ -64,9 +64,10 @@ export default function SRPIndiaSite() {
     const fetchData = async () => {
       try {
         SpinnerService.showSpinner();
-        const [blogsRes, eventsRes] = await Promise.all([getBlogs(), getPaginatedEvent(1, 3)]);
+        const [blogsRes, eventsRes, jobRes] = await Promise.all([getBlogs(), getPaginatedEvent(1, 3), getPaginatedOpenings(1, 3)]);
         setBlogs(blogsRes.data);
         setEvents(eventsRes.data);
+        setJobs(jobRes?.data);
       } catch (err) {
         console.log(err);
       } finally {
@@ -123,25 +124,34 @@ export default function SRPIndiaSite() {
         </div>
       </Section>
 
-      {/* Careers */}
-      <Section id="careers" title="Careers – Experienced US Logistics BPO">
+      <Section
+        id="careers"
+        title={
+          <div className="flex items-center justify-between">
+            <h2 className="text-2xl font-bold">Careers – Experienced US Logistics BPO</h2>
+            <Link href="/careers/openings" className="text-sm font-medium text-teal-700 hover:underline">
+              View All →
+            </Link>
+          </div>
+        }
+      >
         <div className="flex items-center justify-between gap-4">
           <p className="text-slate-600">We hire experienced agents with US voice/process exposure.</p>
           <input placeholder="Search roles (e.g., QA, Turvo, Zoho)" className="w-64 rounded-xl border px-3 py-2 text-sm" value={jobQuery} onChange={(e) => setJobQuery(e.target.value)} />
         </div>
         <div className="mt-6 grid md:grid-cols-2 gap-6">
-          {filteredJobs.map((j) => (
+          {jobs.map((j) => (
             <div key={j.id} className="rounded-2xl border p-5 hover:shadow">
               <div className="flex flex-wrap items-center gap-2">
                 <h3 className="text-lg font-semibold">{j.title}</h3>
                 <div className="ml-auto flex gap-2">
-                  {j.tags.map((t) => (
+                  {JSON.parse(j.tags[0].children[0]?.text).map((t: any) => (
                     <Badge key={t}>{t}</Badge>
                   ))}
                 </div>
               </div>
               <p className="mt-1 text-sm text-slate-600">
-                {j.location} • {j.exp}
+                {j.location} • {j.experience}
               </p>
               <p className="mt-3">{j.description}</p>
               <div className="mt-4 flex gap-3">
@@ -152,23 +162,14 @@ export default function SRPIndiaSite() {
                   Learn More
                 </button>
               </div>
-              {/* Lightweight job detail accordion */}
               <div className="mt-4 grid md:grid-cols-2 gap-4 text-sm">
                 <div>
                   <h4 className="font-semibold">Responsibilities</h4>
-                  <ul className="mt-2 list-disc pl-5 space-y-1">
-                    {j.responsibilities.map((r, i) => (
-                      <li key={i}>{r}</li>
-                    ))}
-                  </ul>
+                  <RichTextRenderer content={truncateContent(j.responsibilities)} />
                 </div>
                 <div>
                   <h4 className="font-semibold">Requirements</h4>
-                  <ul className="mt-2 list-disc pl-5 space-y-1">
-                    {j.requirements.map((r, i) => (
-                      <li key={i}>{r}</li>
-                    ))}
-                  </ul>
+                  <RichTextRenderer content={truncateContent(j.requirements)} />
                 </div>
               </div>
 
@@ -194,7 +195,17 @@ export default function SRPIndiaSite() {
       </Section>
 
       {/* Events / News */}
-      <Section id="events" title="Events • News • Press">
+      <Section
+        id="events"
+        title={
+          <div className="flex items-center justify-between">
+            <h2 className="text-2xl font-bold">Events • News • Press</h2>
+            <Link href="/news/events" className="text-sm font-medium text-teal-700 hover:underline">
+              View All →
+            </Link>
+          </div>
+        }
+      >
         <div className="grid md:grid-cols-3 gap-6">
           {events.map((e) => (
             <article key={e.title} className="rounded-2xl border p-5 hover:shadow">
