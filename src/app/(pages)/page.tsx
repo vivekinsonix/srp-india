@@ -3,16 +3,16 @@
 // TailwindCSS recommended. If not using Tailwind, replace classNames with your CSS.
 'use client';
 
+import { Card } from 'flowbite-react';
 import { CheckCircleIcon } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 import React, { useEffect, useMemo, useState } from 'react';
 import HeroSection from '../components/header/HeroBanner';
 import RichTextRenderer from '../components/RichText/RichTextHandler';
-import { getPaginatedBlogs } from '../services';
+import { getBlogs } from '../services';
 import SpinnerService from '../services/SpinnerService';
 import { formatDate, truncateContent } from '../utils/utility';
-import Link from 'next/link';
-import { Card } from 'flowbite-react';
 
 // ---- Mock Data (replace with CMS/API later) -------------------------------
 const JOBS = [
@@ -38,26 +38,6 @@ const JOBS = [
   },
 ];
 
-const BLOGS = [
-  {
-    slug: 'founder-spotlight-rajwinder-singh-boparai',
-    title: 'Founder Spotlight: Rajwinder Singh Boparai',
-    date: '2025-08-28',
-    author: 'SRP Editorial',
-    excerpt: 'From a handful of trucks to a multi-business logistics brand—Mr. Boparai’s journey and social impact in Punjab.',
-    content: '# Founder Spotlight\n\nMr. Rajwinder Singh Boparai has been instrumental in building a robust trucking and brokerage business in the US, while nurturing employment and training opportunities in Mohali. This post curates media highlights, community initiatives, and our expansion vision for India.',
-  },
-  {
-    slug: 'careers-bpo-us-logistics-mohali',
-    title: 'Careers in US Logistics BPO – Mohali',
-    date: '2025-08-26',
-    author: 'People Ops',
-    excerpt: 'If you’ve worked on US logistics processes and speak excellent English, we want to talk.',
-    content: '# Careers in US Logistics BPO\n\nWe’re hiring experienced agents who’ve handled TMS/CRM and US voice processes. Learn about roles, growth paths, and benefits.',
-  },
-];
-
-// ---- Small UI bits --------------------------------------------------------
 const Badge = ({ children }: { children: React.ReactNode }) => <span className="inline-flex items-center rounded-full border px-2 py-0.5 text-xs font-medium">{children}</span>;
 
 const Section = ({ id, title, children, muted }: any) => (
@@ -96,6 +76,7 @@ interface BlogPost {
     url: string;
   };
   Seo: Seo;
+  is_main: boolean;
 }
 
 // ---- Main Page ------------------------------------------------------------
@@ -103,10 +84,15 @@ export default function SRPIndiaSite() {
   const [activeBlog, setActiveBlog] = useState<string | null>(null);
   const [jobQuery, setJobQuery] = useState('');
   const [blogs, setBlogs] = useState<BlogPost[]>([]);
+  const mainBlog = blogs.find((b) => b.is_main === true);
+
+  const otherBlogs = useMemo(() => blogs.filter((b) => !b.is_main), [blogs]);
+
+  const selectedBlogs = useMemo(() => [...(mainBlog ? [mainBlog] : []), ...otherBlogs.slice(0, mainBlog ? 2 : 3)], [mainBlog, blogs, otherBlogs]);
 
   useEffect(() => {
     SpinnerService.showSpinner();
-    getPaginatedBlogs(1, 3)
+    getBlogs()
       .then((e) => setBlogs(e.data))
       .catch((e) => console.log(e))
       .finally(() => SpinnerService.hideSpinner());
@@ -264,66 +250,53 @@ export default function SRPIndiaSite() {
           </div>
         }
       >
-   <div className="grid md:grid-cols-8 gap-6">
-  {/* Left side: 1 featured blog post */}
-  <article className="col-span-6">
-    {blogs.length > 0 && (
-      <Card key={blogs[0].slug} className="mb-4 hover:shadow-lg">
-        <Image
-          src={blogs[0]?.coverImage?.url}
-          alt={blogs[0].title}
-          width={800}
-          height={600}
-          className="h-72 w-full object-cover rounded-t-lg"
-        />
-        <div className="p-0">
-          <h2 className="text-2xl font-bold">{blogs[0].title}</h2>
-          <p className="text-sm text-slate-500">
-            {formatDate(blogs[0]?.publishedAt)} • {blogs[0].author}
-          </p>
-          <p className="mt-3 text-slate-700">{blogs[0].excerpt}</p>
-          <RichTextRenderer content={truncateContent(blogs[0].content)} />
-          <Link
-            href={`/blogs/${blogs[0].slug}`}
-            className="mt-4 inline-block text-teal-700 font-semibold"
-          >
-            Read More →
-          </Link>
-        </div>
-      </Card>
-    )}
-  </article>
+        <div className="grid md:grid-cols-8 gap-6">
+          {/* Left side: 1 featured blog post */}
+          <article className="col-span-6">
+            {mainBlog && (
+              <Card key={mainBlog.slug} className="mb-4 hover:shadow-lg">
+                <Image src={mainBlog?.coverImage?.url} alt={mainBlog.title} width={800} height={600} className="h-72 w-full object-cover rounded-t-lg" />
+                <div className="p-0">
+                  <h2 className="text-2xl font-bold">{mainBlog.title}</h2>
+                  <p className="text-sm text-slate-500">
+                    {formatDate(mainBlog?.publishedAt)} • {mainBlog.author}
+                  </p>
+                  <p className="mt-3 text-slate-700">{mainBlog.excerpt}</p>
+                  <RichTextRenderer content={truncateContent(mainBlog.content)} />
+                  <Link href={`/blogs/details/${mainBlog.slug}`} className="mt-4 inline-block text-teal-700 font-semibold">
+                    Read More →
+                  </Link>
+                </div>
+              </Card>
+            )}
+          </article>
 
-  {/* Right side: other blog posts without images*/}
-  <article className="col-span-2">
-    {blogs.slice(1).map((b) => (
-      <Card key={b.slug} className="mb-3  px-1 hover:shadow">
-       {/* <Image
+          {/* Right side: other blog posts without images*/}
+          <article className="col-span-2">
+            {selectedBlogs.slice(1).map((b) => (
+              <Card key={b.slug} className="mb-3  px-1 hover:shadow">
+                {/* <Image
           src={b?.coverImage?.url}
           alt={b.title}
           width={600}
           height={400}
           className="h-48 w-full object-cover rounded-t-lg"
         />  */}
-        <div className="p-0">
-          <h3 className="text-lg font-semibold">{b.title}</h3>
-          <p className="text-xs text-slate-500">
-            {formatDate(b?.publishedAt)} • {b.author}
-          </p>
-          <p className="mt-2 text-slate-700">{b.excerpt}</p>
-          <RichTextRenderer content={truncateContent(b.content)} />
-          <Link
-            href={`/blogs/${b.slug}`}
-            className="mt-3 inline-block text-teal-700 font-semibold"
-          >
-            Read More →
-          </Link>
+                <div className="p-0">
+                  <h3 className="text-lg font-semibold">{b.title}</h3>
+                  <p className="text-xs text-slate-500">
+                    {formatDate(b?.publishedAt)} • {b.author}
+                  </p>
+                  <p className="mt-2 text-slate-700">{b.excerpt}</p>
+                  <RichTextRenderer content={truncateContent(b.content)} />
+                  <Link href={`blogs/details/${b.slug}`} className="mt-3 inline-block text-teal-700 font-semibold">
+                    Read More →
+                  </Link>
+                </div>
+              </Card>
+            ))}
+          </article>
         </div>
-      </Card>
-    ))}
-  </article>
-</div>
-
       </Section>
 
       {/* Contact / Footer */}
