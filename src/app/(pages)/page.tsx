@@ -239,9 +239,9 @@ export default function SRPIndiaSite() {
           {/* Left side: first two blogs */}
           <aside className="col-span-2 space-y-4">
             {otherBlogs.slice(0, 2).map((b) => (
-              <Card key={b.slug} className="mb-3 px-1 hover:shadow">
+              <Card key={b.slug} className="mb-3 hover:shadow">
                 <Image src={b?.coverImage?.url} alt={b.title} width={600} height={300} className="h-40 w-full object-cover rounded-t-lg" />
-                <div className="p-0">
+                <div className="p-3">
                   <h3 className="text-lg font-semibold">{b.title}</h3>
                   <p className="text-xs text-slate-500">
                     {formatDate(b?.publishedAt)} • {b.author}
@@ -268,7 +268,7 @@ export default function SRPIndiaSite() {
                   {mainBlog.Seo.structuredData && <script type="application/ld+json">{mainBlog.Seo.structuredData}</script>}
                 </Head>
                 <Image src={mainBlog?.coverImage?.url} alt={mainBlog.title} width={800} height={600} className="h-72 w-full object-cover rounded-t-lg" />
-                <div className="p-0">
+                <div className="p-3">
                   <h2 className="text-2xl font-bold">{mainBlog.title}</h2>
                   <p className="text-sm text-slate-500">
                     {formatDate(mainBlog?.publishedAt)} • {mainBlog.author}
@@ -286,8 +286,8 @@ export default function SRPIndiaSite() {
           {/* Right side: next two blogs */}
           <aside className="col-span-2 space-y-4">
             {otherBlogs.slice(2, 4).map((b) => (
-              <Card key={b.slug} className="mb-3 px-1 hover:shadow">
-                <div className="p-0">
+              <Card key={b.slug} className="mb-3  hover:shadow">
+                <div className="p-3">
                   <h3 className="text-lg font-semibold">{b.title}</h3>
                   <p className="text-xs text-slate-500">
                     {formatDate(b?.publishedAt)} • {b.author}
