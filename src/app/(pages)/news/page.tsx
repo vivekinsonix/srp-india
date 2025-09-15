@@ -25,8 +25,6 @@ export default function News() {
     },
   ];
 
-  console.log('inside news');
-
   return (
     <>
       <div className="min-h-screen bg-white text-slate-800">

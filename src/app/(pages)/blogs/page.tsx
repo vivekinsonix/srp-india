@@ -2,39 +2,12 @@
 import RichTextRenderer from '@/app/components/RichText/RichTextHandler';
 import { getBlogs } from '@/app/services';
 import SpinnerService from '@/app/services/SpinnerService';
+import { BlogPost } from '@/app/utils/interfaces';
 import { formatDate, truncateContent } from '@/app/utils/utility';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import HeroSection from '../../components/subheader/AppHeroSection';
-interface Seo {
-  id: number;
-  metaTitle: string;
-  metaDescription: string;
-  keywords: string;
-  metaRobots: string | null;
-  metaViewport: string | null;
-  canonicalURL: string | null;
-  structuredData: string | null;
-}
-
-interface BlogPost {
-  id: number;
-  documentId: string;
-  title: string;
-  slug: string;
-  excerpt: string | null;
-  content: string;
-  author: string;
-  tags: string[] | null;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-  coverImage: {
-    url: string;
-  };
-  Seo: Seo;
-}
 
 export default function Blogs() {
   const [blogs, setBlogs] = useState<BlogPost[]>([]);
@@ -67,7 +40,7 @@ export default function Blogs() {
                   <p className="text-xs text-slate-500">{formatDate(post?.publishedAt)}</p>
                   <p className="text-xs text-slate-500">{post.author}</p>
                   <RichTextRenderer content={truncateContent(post.content)} />
-                  <Link href={`/blogs/details${post.id}`} className="text-blue-600 hover:underline hover:text-blue-800">
+                  <Link href={`/blogs/details/${post.slug}`} className="text-blue-600 hover:underline hover:text-blue-800">
                     Read More..
                   </Link>
                 </div>

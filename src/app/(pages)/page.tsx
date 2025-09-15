@@ -5,13 +5,15 @@
 
 import { Card } from 'flowbite-react';
 import { CheckCircleIcon } from 'lucide-react';
+import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useMemo, useState } from 'react';
 import HeroSection from '../components/header/HeroBanner';
 import RichTextRenderer from '../components/RichText/RichTextHandler';
-import { getBlogs } from '../services';
+import { getBlogs, getPaginatedEvent } from '../services';
 import SpinnerService from '../services/SpinnerService';
+import { BlogPost, Events } from '../utils/interfaces';
 import { formatDate, truncateContent } from '../utils/utility';
 
 // ---- Mock Data (replace with CMS/API later) -------------------------------
@@ -49,53 +51,30 @@ const Section = ({ id, title, children, muted }: any) => (
   </section>
 );
 
-interface Seo {
-  id: number;
-  metaTitle: string;
-  metaDescription: string;
-  keywords: string;
-  metaRobots: string | null;
-  metaViewport: string | null;
-  canonicalURL: string | null;
-  structuredData: string | null;
-}
-
-interface BlogPost {
-  id: number;
-  documentId: string;
-  title: string;
-  slug: string;
-  excerpt: string | null;
-  content: string;
-  author: string;
-  tags: string[] | null;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-  coverImage: {
-    url: string;
-  };
-  Seo: Seo;
-  is_main: boolean;
-}
-
-// ---- Main Page ------------------------------------------------------------
 export default function SRPIndiaSite() {
   const [activeBlog, setActiveBlog] = useState<string | null>(null);
   const [jobQuery, setJobQuery] = useState('');
   const [blogs, setBlogs] = useState<BlogPost[]>([]);
+  const [events, setEvents] = useState<Events[]>([]);
   const mainBlog = blogs.find((b) => b.is_main === true);
 
   const otherBlogs = useMemo(() => blogs.filter((b) => !b.is_main), [blogs]);
 
-  const selectedBlogs = useMemo(() => [...(mainBlog ? [mainBlog] : []), ...otherBlogs.slice(0, mainBlog ? 2 : 3)], [mainBlog, blogs, otherBlogs]);
-
   useEffect(() => {
-    SpinnerService.showSpinner();
-    getBlogs()
-      .then((e) => setBlogs(e.data))
-      .catch((e) => console.log(e))
-      .finally(() => SpinnerService.hideSpinner());
+    const fetchData = async () => {
+      try {
+        SpinnerService.showSpinner();
+        const [blogsRes, eventsRes] = await Promise.all([getBlogs(), getPaginatedEvent(1, 3)]);
+        setBlogs(blogsRes.data);
+        setEvents(eventsRes.data);
+      } catch (err) {
+        console.log(err);
+      } finally {
+        SpinnerService.hideSpinner();
+      }
+    };
+
+    fetchData();
   }, []);
 
   const filteredJobs = useMemo(() => {
@@ -107,7 +86,6 @@ export default function SRPIndiaSite() {
   return (
     <div className="min-h-screen bg-white text-slate-800">
       <HeroSection />
-      {/* Founder / PR */}
       <Section id="founder" title="Leadership Initiatives">
         <div className="grid md:grid-cols-3 gap-8 items-start">
           <div className="md:col-span-2 space-y-4">
@@ -218,21 +196,17 @@ export default function SRPIndiaSite() {
       {/* Events / News */}
       <Section id="events" title="Events • News • Press">
         <div className="grid md:grid-cols-3 gap-6">
-          {[
-            { title: 'Campus visit by dignitaries', date: 'Aug 2025', tag: 'Media' },
-            { title: 'Youth talk on BPO careers', date: 'Jul 2025', tag: 'Community' },
-            { title: 'Podcast: Scaling US brokerage from Mohali', date: 'Jun 2025', tag: 'Podcast' },
-          ].map((e) => (
+          {events.map((e) => (
             <article key={e.title} className="rounded-2xl border p-5 hover:shadow">
               <div className="flex items-center gap-2 text-xs">
-                <Badge>{e.tag}</Badge>
+                <Badge>{e?.category}</Badge>
                 <span className="text-slate-500">{e.date}</span>
               </div>
               <h3 className="mt-2 text-lg font-semibold">{e.title}</h3>
               <p className="mt-2 text-sm text-slate-600">Short summary of the event and a link to full coverage, photos and video embeds.</p>
-              <a className="mt-3 inline-block text-teal-700 font-semibold" href="#">
-                Read more →
-              </a>
+              <Link href={`/news/events/details/${e.slug}`} className="mt-4 inline-block text-teal-700 font-semibold">
+                Read More →
+              </Link>
             </article>
           ))}
         </div>
@@ -251,10 +225,37 @@ export default function SRPIndiaSite() {
         }
       >
         <div className="grid md:grid-cols-8 gap-6">
-          {/* Left side: 1 featured blog post */}
-          <article className="col-span-6">
+          {/* Left side: first two blogs */}
+          <aside className="col-span-2 space-y-4">
+            {otherBlogs.slice(0, 2).map((b) => (
+              <Card key={b.slug} className="mb-3 px-1 hover:shadow">
+                <Image src={b?.coverImage?.url} alt={b.title} width={600} height={300} className="h-40 w-full object-cover rounded-t-lg" />
+                <div className="p-0">
+                  <h3 className="text-lg font-semibold">{b.title}</h3>
+                  <p className="text-xs text-slate-500">
+                    {formatDate(b?.publishedAt)} • {b.author}
+                  </p>
+                  <p className="mt-2 text-slate-700">{b.excerpt}</p>
+                  <Link href={`blogs/details/${b.slug}`} className="mt-3 inline-block text-teal-700 font-semibold">
+                    Read More →
+                  </Link>
+                </div>
+              </Card>
+            ))}
+          </aside>
+
+          {/* Center: main blog */}
+          <main className="col-span-4">
             {mainBlog && (
               <Card key={mainBlog.slug} className="mb-4 hover:shadow-lg">
+                <Head>
+                  <title>{mainBlog.Seo.metaTitle}</title>
+                  <meta name="description" content={mainBlog.Seo.metaDescription} />
+                  {mainBlog.Seo.keywords && <meta name="keywords" content={mainBlog.Seo.keywords} />}
+                  {mainBlog.Seo.metaRobots && <meta name="robots" content={mainBlog.Seo.metaRobots} />}
+                  {mainBlog.Seo.canonicalURL && <link rel="canonical" href={mainBlog.Seo.canonicalURL} />}
+                  {mainBlog.Seo.structuredData && <script type="application/ld+json">{mainBlog.Seo.structuredData}</script>}
+                </Head>
                 <Image src={mainBlog?.coverImage?.url} alt={mainBlog.title} width={800} height={600} className="h-72 w-full object-cover rounded-t-lg" />
                 <div className="p-0">
                   <h2 className="text-2xl font-bold">{mainBlog.title}</h2>
@@ -269,19 +270,12 @@ export default function SRPIndiaSite() {
                 </div>
               </Card>
             )}
-          </article>
+          </main>
 
-          {/* Right side: other blog posts without images*/}
-          <article className="col-span-2">
-            {selectedBlogs.slice(1).map((b) => (
-              <Card key={b.slug} className="mb-3  px-1 hover:shadow">
-                {/* <Image
-          src={b?.coverImage?.url}
-          alt={b.title}
-          width={600}
-          height={400}
-          className="h-48 w-full object-cover rounded-t-lg"
-        />  */}
+          {/* Right side: next two blogs */}
+          <aside className="col-span-2 space-y-4">
+            {otherBlogs.slice(2, 4).map((b) => (
+              <Card key={b.slug} className="mb-3 px-1 hover:shadow">
                 <div className="p-0">
                   <h3 className="text-lg font-semibold">{b.title}</h3>
                   <p className="text-xs text-slate-500">
@@ -295,7 +289,7 @@ export default function SRPIndiaSite() {
                 </div>
               </Card>
             ))}
-          </article>
+          </aside>
         </div>
       </Section>
 

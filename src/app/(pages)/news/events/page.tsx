@@ -3,23 +3,12 @@
 import HeroSection from '@/app/components/subheader/AppHeroSection';
 import { getEvents } from '@/app/services';
 import SpinnerService from '@/app/services/SpinnerService';
+import { Events } from '@/app/utils/interfaces';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
-interface EventGallery {
-  url: string;
-}
-
-interface Event {
-  id: number;
-  title: string;
-  date: string;
-  summary: string;
-  gallery: EventGallery[];
-}
-
 export default function EventsPage() {
-  const [events, setEvents] = useState<Event[]>([]);
+  const [events, setEvents] = useState<Events[]>([]);
 
   useEffect(() => {
     SpinnerService.showSpinner();
@@ -45,8 +34,8 @@ export default function EventsPage() {
                 <div className="text-xs text-slate-500">{e.date}</div>
                 <h2 className="text-lg font-semibold mt-1">{e.title}</h2>
                 <p className="mt-2 text-slate-700">{e.summary}</p>
-                <Link className="mt-3 inline-block font-semibold text-teal-700 hover:underline" href={`/news/events/${e.id}`}>
-                  read more
+                <Link href={`/news/events/details/${e.slug}`} className="mt-4 inline-block text-teal-700 font-semibold">
+                  Read More →
                 </Link>
               </article>
             ))}

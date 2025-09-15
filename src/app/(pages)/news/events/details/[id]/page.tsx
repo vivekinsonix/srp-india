@@ -1,25 +1,23 @@
 import RichTextRenderer from '@/app/components/RichText/RichTextHandler';
-import { getBlogBySlug, getBlogs } from '@/app/services';
+import { getEventBySlug, getEvents } from '@/app/services';
 import Head from 'next/head';
 import Image from 'next/image';
 
 export async function generateStaticParams() {
-  const blogs = await getBlogs();
-  return blogs?.data?.map((b: any) => ({
+  const event = await getEvents();
+  return event?.data?.map((b: any) => ({
     id: b.attributes?.slug || b.slug,
   }));
 }
 
 export default async function BlogDetails({ params }: { params: { id: string } }) {
-  const blog = await getBlogBySlug(params.id);
+  const event = await getEventBySlug(params.id);
 
-  if (!blog) {
-    return <div>Blog not found</div>;
+  if (!event) {
+    return <div>event not found</div>;
   }
 
-  const seo = blog?.Seo;
-
-  const attributes = blog.attributes || blog;
+  const seo = event?.Seo;
 
   return (
     <>
@@ -34,11 +32,11 @@ export default async function BlogDetails({ params }: { params: { id: string } }
         </Head>
       )}
 
-      {blog ? (
+      {event ? (
         <div className="container mx-auto max-w-4xl py-10">
-          <h1 className="text-3xl font-bold mb-4">{blog.title}</h1>
-          {blog.coverImage?.url && <Image src={blog.coverImage.url} alt={blog.title} width={800} height={500} className="mb-6" />}
-          <RichTextRenderer content={blog.content} />
+          <h1 className="text-3xl font-bold mb-4">{event.title}</h1>
+          {event.gallery[0]?.mime === 'video/mp4' ? <video src={event.gallery[0]?.url} height={600} className="h-48 w-full object-cover" autoPlay muted loop playsInline /> : <Image src={event.gallery[0]?.url} alt={event.title} width={800} height={500} className="mb-6" />}
+          <RichTextRenderer content={event.summary} />
         </div>
       ) : (
         <p className="text-center py-20">Loading…</p>

@@ -1,14 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-export interface Seo {
-  id: number;
-  metaTitle: string;
-  metaDescription: string;
-  keywords: string;
-  metaRobots: string | null;
-  metaViewport: string | null;
-  canonicalURL: string | null;
-  structuredData: string | null;
-}
 
 export interface Job {
   id: number;
@@ -21,19 +11,19 @@ export interface Job {
   responsibilities: string;
   requirements: string;
   isOpen: boolean;
-  createdAt: string; 
-  updatedAt: string; 
-  publishedAt: string; 
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
   tags: any;
 }
 
 export interface Tag {
-  type: string; 
+  type: string;
   children: TagChild[];
 }
 
 export interface TagChild {
-  text: string; 
+  text: string;
   type: string;
 }
 
@@ -42,6 +32,16 @@ export interface applicationDetails {
   email: string;
 }
 
+export interface Seo {
+  id: number;
+  metaTitle: string;
+  metaDescription: string;
+  keywords: string;
+  metaRobots: string | null;
+  metaViewport: string | null;
+  canonicalURL: string | null;
+  structuredData: string | null;
+}
 
 export interface BlogPost {
   id: number;
@@ -59,4 +59,49 @@ export interface BlogPost {
     url: string;
   };
   Seo: Seo;
+  is_main:boolean
+}
+
+export interface ProviderMetadata {
+  public_id: string;
+  resource_type: string;
+}
+
+export interface GalleryItem {
+  id: number;
+  documentId: string;
+  name: string;
+  alternativeText: string | null;
+  caption: string | null;
+  width: number | null;
+  height: number | null;
+  formats: any; // or a specific type if you know the formats object shape
+  hash: string;
+  ext: string;
+  mime: string;
+  size: number;
+  url: string;
+  previewUrl: string | null;
+  provider: string;
+  provider_metadata: ProviderMetadata;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+}
+
+export interface Events {
+  id: number;
+  documentId: string;
+  title: string;
+  slug: string;
+  summary: string;
+  date: string;
+  category: string;
+  body: string;
+  links: string | null;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  Seo: Seo;
+  gallery: GalleryItem[];
 }
