@@ -31,16 +31,17 @@ export default async function BlogDetails({ params }: { params: { id: string } }
           {seo.structuredData && <script type="application/ld+json">{seo.structuredData}</script>}
         </Head>
       )}
-
+<div className="min-h-screen bg-white text-slate-800">
       {event ? (
-        <div className="container mx-auto max-w-4xl py-10">
+       <main className="container mx-auto max-w-4xl px-4 py-10">
           <h1 className="text-3xl font-bold mb-4">{event.title}</h1>
-          {event.gallery[0]?.mime === 'video/mp4' ? <video src={event.gallery[0]?.url} height={600} className="h-48 w-full object-cover" autoPlay muted loop playsInline /> : <Image src={event.gallery[0]?.url} alt={event.title} width={800} height={500} className="mb-6" />}
+          {event.gallery[0]?.mime === 'video/mp4' ? <video src={event.gallery[0]?.url} height={600} className="h-full w-full object-cover" autoPlay muted loop playsInline /> : <Image src={event.gallery[0]?.url} alt={event.title} width={800} height={500} className="mb-6" />}
           <RichTextRenderer content={event.summary} />
-        </div>
+        </main>
       ) : (
         <p className="text-center py-20">Loading…</p>
       )}
+      </div>
     </>
   );
 }

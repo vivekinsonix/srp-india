@@ -37,11 +37,11 @@ export default async function BlogDetails({ params }: { params: { id: string } }
 <div className="min-h-screen bg-white text-slate-800">
        
       {blog ? (
-        <div className="container mx-auto max-w-4xl py-10 bg-white">
+      <main className="container mx-auto max-w-4xl px-4 py-10">
           <h1 className="text-3xl font-bold mb-4">{blog.title}</h1>
           {blog.coverImage?.url && <Image src={blog.coverImage.url} alt={blog.title} width={800} height={500} className="mb-6 w-full" />}
           <RichTextRenderer content={blog.content} />
-        </div>
+        </main>
       ) : (
         <p className="text-center py-20">Loading…</p>
       )}
