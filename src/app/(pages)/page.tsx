@@ -6,13 +6,13 @@
 import { CheckCircleIcon } from 'lucide-react';
 import Image from 'next/image';
 import React, { useEffect, useMemo, useState } from 'react';
-import Footer from '../components/footer/Footer';
 import HeroSection from '../components/header/HeroBanner';
 import RichTextRenderer from '../components/RichText/RichTextHandler';
 import { getPaginatedBlogs } from '../services';
 import SpinnerService from '../services/SpinnerService';
 import { formatDate, truncateContent } from '../utils/utility';
 import Link from 'next/link';
+import { Card } from 'flowbite-react';
 
 // ---- Mock Data (replace with CMS/API later) -------------------------------
 const JOBS = [
@@ -264,22 +264,66 @@ export default function SRPIndiaSite() {
           </div>
         }
       >
-        <div className="grid md:grid-cols-3 gap-6">
-          {blogs.map((b) => (
-            <article key={b.slug} className="rounded-2xl border p-5 hover:shadow">
-              <Image src={b?.coverImage?.url} alt={b.title} width={600} height={400} className="h-48 w-full object-cover" />
-              <h3 className="text-lg font-semibold">{b.title}</h3>
-              <p className="text-xs text-slate-500">
-                {formatDate(b?.publishedAt)} • {b.author}
-              </p>
-              <p className="mt-2 text-slate-700">{b.excerpt}</p>
-              <RichTextRenderer content={truncateContent(b.content)} />
-              <Link href={`/blogs/details`} className="mt-3 text-teal-700 font-semibold">
-                Open →
-              </Link>
-            </article>
-          ))}
+   <div className="grid md:grid-cols-8 gap-6">
+  {/* Left side: 1 featured blog post */}
+  <article className="col-span-6">
+    {blogs.length > 0 && (
+      <Card key={blogs[0].slug} className="mb-4 hover:shadow-lg">
+        <Image
+          src={blogs[0]?.coverImage?.url}
+          alt={blogs[0].title}
+          width={800}
+          height={600}
+          className="h-72 w-full object-cover rounded-t-lg"
+        />
+        <div className="p-0">
+          <h2 className="text-2xl font-bold">{blogs[0].title}</h2>
+          <p className="text-sm text-slate-500">
+            {formatDate(blogs[0]?.publishedAt)} • {blogs[0].author}
+          </p>
+          <p className="mt-3 text-slate-700">{blogs[0].excerpt}</p>
+          <RichTextRenderer content={truncateContent(blogs[0].content)} />
+          <Link
+            href={`/blogs/${blogs[0].slug}`}
+            className="mt-4 inline-block text-teal-700 font-semibold"
+          >
+            Read More →
+          </Link>
         </div>
+      </Card>
+    )}
+  </article>
+
+  {/* Right side: other blog posts without images*/}
+  <article className="col-span-2">
+    {blogs.slice(1).map((b) => (
+      <Card key={b.slug} className="mb-3  px-1 hover:shadow">
+       {/* <Image
+          src={b?.coverImage?.url}
+          alt={b.title}
+          width={600}
+          height={400}
+          className="h-48 w-full object-cover rounded-t-lg"
+        />  */}
+        <div className="p-0">
+          <h3 className="text-lg font-semibold">{b.title}</h3>
+          <p className="text-xs text-slate-500">
+            {formatDate(b?.publishedAt)} • {b.author}
+          </p>
+          <p className="mt-2 text-slate-700">{b.excerpt}</p>
+          <RichTextRenderer content={truncateContent(b.content)} />
+          <Link
+            href={`/blogs/${b.slug}`}
+            className="mt-3 inline-block text-teal-700 font-semibold"
+          >
+            Read More →
+          </Link>
+        </div>
+      </Card>
+    ))}
+  </article>
+</div>
+
       </Section>
 
       {/* Contact / Footer */}
