@@ -16,29 +16,6 @@ import SpinnerService from '../services/SpinnerService';
 import { BlogPost, Events, Job } from '../utils/interfaces';
 import { formatDate, truncateContent } from '../utils/utility';
 
-const JOBS = [
-  {
-    id: 'senior-bpo-agent',
-    title: 'Senior BPO Agent – US Logistics',
-    location: 'Mohali, Punjab (On-site)',
-    exp: '2–4 years in US logistics/BPO',
-    tags: ['Night Shift', 'US Voice', 'Zoho', 'Turvo'],
-    description: 'Own end-to-end call handling, load status updates, and CRM hygiene. Prior US logistics or brokerage BPO required.',
-    responsibilities: ['Handle inbound/outbound calls via RingCentral with QA-ready notes', 'Update load statuses; coordinate with US team on exceptions', 'Maintain Zoho hygiene; log 100% interactions', 'Coach juniors; uphold process SOPs'],
-    requirements: ['Excellent English (neutral accent)', 'Hands-on with any CRM (Zoho preferred)', 'TMS familiarity (Turvo preferred)', 'Availability for US time zones'],
-  },
-  {
-    id: 'qa-analyst',
-    title: 'Quality Analyst – Voice (RingCentral)',
-    location: 'Mohali, Punjab (On-site)',
-    exp: '3+ years QA in contact center',
-    tags: ['QA', 'Call Audits', 'Coaching'],
-    description: 'Audit calls, score agents, and partner with ops for continuous improvement.',
-    responsibilities: ['Calibrate QA scorecards and run audits', 'Publish weekly quality insights and training needs', 'Own coaching plans with Team Leads'],
-    requirements: ['Strong English and documentation', 'Experience with RingCentral or similar', 'BPO QA experience'],
-  },
-];
-
 const Badge = ({ children }: { children: React.ReactNode }) => <span className="inline-flex items-center rounded-full border px-2 py-0.5 text-xs font-medium">{children}</span>;
 
 const Section = ({ id, title, children, muted }: any) => (
@@ -51,11 +28,11 @@ const Section = ({ id, title, children, muted }: any) => (
 );
 
 export default function SRPIndiaSite() {
-  const [activeBlog, setActiveBlog] = useState<string | null>(null);
   const [jobQuery, setJobQuery] = useState('');
   const [blogs, setBlogs] = useState<BlogPost[]>([]);
   const [events, setEvents] = useState<Events[]>([]);
   const [jobs, setJobs] = useState<Job[]>([]);
+
   const mainBlog = blogs.find((b) => b.is_main === true);
 
   const otherBlogs = useMemo(() => blogs.filter((b) => !b.is_main), [blogs]);
@@ -65,9 +42,9 @@ export default function SRPIndiaSite() {
       try {
         SpinnerService.showSpinner();
         const [blogsRes, eventsRes, jobRes] = await Promise.all([getBlogs(), getPaginatedEvent(1, 3), getPaginatedOpenings(1, 3)]);
-        setBlogs(blogsRes.data);
-        setEvents(eventsRes.data);
-        setJobs(jobRes?.data);
+        setBlogs(blogsRes?.data || []);
+        setEvents(eventsRes.data || []);
+        setJobs(jobRes?.data || []);
       } catch (err) {
         console.log(err);
       } finally {
@@ -77,12 +54,6 @@ export default function SRPIndiaSite() {
 
     fetchData();
   }, []);
-
-  const filteredJobs = useMemo(() => {
-    if (!jobQuery) return JOBS;
-    const q = jobQuery.toLowerCase();
-    return JOBS.filter((j) => j.title.toLowerCase().includes(q) || j.tags.join(' ').toLowerCase().includes(q));
-  }, [jobQuery]);
 
   return (
     <div className="min-h-screen bg-white text-slate-800">
@@ -135,16 +106,12 @@ export default function SRPIndiaSite() {
           </div>
         }
       >
-        <div className="flex items-center justify-between gap-4">
-          <p className="text-slate-600">We hire experienced agents with US voice/process exposure.</p>
-          <input placeholder="Search roles (e.g., QA, Turvo, Zoho)" className="w-64 rounded-xl border px-3 py-2 text-sm" value={jobQuery} onChange={(e) => setJobQuery(e.target.value)} />
-        </div>
         <div className="mt-6 grid md:grid-cols-2 gap-6">
           {jobs.map((j) => (
-            <div key={j.id} className="rounded-2xl border p-5 hover:shadow">
+            <Card key={j.id} className="rounded-2xl border p-5 hover:shadow">
               <div className="flex flex-wrap items-center gap-2">
                 <h3 className="text-lg font-semibold">{j.title}</h3>
-                <div className="ml-auto flex gap-2">
+                <div className="flex gap-2 justify-start">
                   {JSON.parse(j.tags[0].children[0]?.text).map((t: any) => (
                     <Badge key={t}>{t}</Badge>
                   ))}
@@ -153,43 +120,13 @@ export default function SRPIndiaSite() {
               <p className="mt-1 text-sm text-slate-600">
                 {j.location} • {j.experience}
               </p>
-              <p className="mt-3">{j.description}</p>
+              <RichTextRenderer content={truncateContent(j.description)} />
               <div className="mt-4 flex gap-3">
                 <a href={`#apply-${j.id}`} className="rounded-xl bg-teal-600 px-4 py-2 text-white">
                   Apply
                 </a>
-                <button className="rounded-xl border px-4 py-2" onClick={() => setActiveBlog('careers-bpo-us-logistics-mohali')}>
-                  Learn More
-                </button>
               </div>
-              <div className="mt-4 grid md:grid-cols-2 gap-4 text-sm">
-                <div>
-                  <h4 className="font-semibold">Responsibilities</h4>
-                  <RichTextRenderer content={truncateContent(j.responsibilities)} />
-                </div>
-                <div>
-                  <h4 className="font-semibold">Requirements</h4>
-                  <RichTextRenderer content={truncateContent(j.requirements)} />
-                </div>
-              </div>
-
-              {/* Apply form anchor */}
-              <form id={`apply-${j.id}`} className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-3">
-                <input required placeholder="Full name" className="rounded-xl border px-3 py-2" />
-                <input required type="email" placeholder="Email" className="rounded-xl border px-3 py-2" />
-                <input required placeholder="Phone" className="rounded-xl border px-3 py-2" />
-                <input placeholder="Years of relevant experience" className="rounded-xl border px-3 py-2" />
-                <input placeholder="Previous employer(s)" className="rounded-xl border px-3 py-2 md:col-span-2" />
-                <textarea placeholder="Why you? (2–3 lines)" className="rounded-xl border px-3 py-2 md:col-span-2" />
-                <div className="flex items-center gap-2 text-sm md:col-span-2">
-                  <input id={`night-${j.id}`} type="checkbox" className="h-4 w-4" />
-                  <label htmlFor={`night-${j.id}`}>Comfortable with US time zones / night shift</label>
-                </div>
-                <button type="submit" className="mt-2 rounded-xl bg-teal-600 px-4 py-2 text-white md:col-span-2">
-                  Submit Application
-                </button>
-              </form>
-            </div>
+            </Card>
           ))}
         </div>
       </Section>
@@ -208,7 +145,7 @@ export default function SRPIndiaSite() {
       >
         <div className="grid md:grid-cols-3 gap-6">
           {events.map((e) => (
-            <article key={e.title} className="rounded-2xl border p-5 hover:shadow">
+            <Card key={e.title} className="rounded-2xl  p-5 ">
               <div className="flex items-center gap-2 text-xs">
                 <Badge>{e?.category}</Badge>
                 <span className="text-slate-500">{e.date}</span>
@@ -218,7 +155,7 @@ export default function SRPIndiaSite() {
               <Link href={`/news/events/details/${e.slug}`} className="mt-4 inline-block text-teal-700 font-semibold">
                 Read More →
               </Link>
-            </article>
+            </Card>
           ))}
         </div>
       </Section>

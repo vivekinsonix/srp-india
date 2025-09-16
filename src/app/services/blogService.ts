@@ -1,6 +1,7 @@
 import { apiClient } from './apiService';
 
 export function getBlogs() {
+  
   return apiClient.get('/blogs?&&populate=*&sort=createdAt:desc').then((res) => res.data);
 }
 

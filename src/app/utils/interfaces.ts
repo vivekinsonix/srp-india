@@ -59,7 +59,7 @@ export interface BlogPost {
     url: string;
   };
   Seo: Seo;
-  is_main:boolean
+  is_main: boolean;
 }
 
 export interface ProviderMetadata {
@@ -104,4 +104,16 @@ export interface Events {
   publishedAt: string;
   Seo: Seo;
   gallery: GalleryItem[];
+}
+
+export interface QuestionField {
+  id: number;
+  documentId: string;
+  text: string;
+  label: string;
+  type: string;
+  required: boolean;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
 }

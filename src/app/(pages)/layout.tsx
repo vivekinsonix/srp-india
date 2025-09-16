@@ -4,9 +4,10 @@ import GlobalSpinner from '../components/spinner/GlobalSpinner';
 import './globals.css';
 import Footer from '../components/footer/Footer';
 import Header from '../components/header/Header';
-import Toaster from '../components/toaster/Toaster'
+import Toaster from '../components/toaster/Toaster';
 import { ThemeProvider } from 'flowbite-react';
-import { customTheme } from "./theme";
+import { customTheme } from './theme';
+import Head from 'next/head';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -26,13 +27,16 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
+      <Head>
+        <link rel="icon" href="/srp-us-white.png" type="image/png" />
+      </Head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ThemeProvider theme={customTheme}>
-        <GlobalSpinner />
-         <Toaster />
-        <Header />
-        {children}
-        <Footer />
+          <GlobalSpinner />
+          <Toaster />
+          <Header />
+          {children}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
