@@ -174,7 +174,7 @@ export default function SRPIndiaSite() {
       >
         <div className="grid md:grid-cols-8 gap-6">
           {/* Left side: first two blogs */}
-          <aside className="col-span-2 space-y-4">
+          <aside className="md:col-span-2  space-y-4">
             {otherBlogs.slice(0, 2).map((b) => (
               <Card key={b.slug} className="mb-3 hover:shadow">
                 <Image src={b?.coverImage?.url} alt={b.title} width={600} height={300} className="h-40 w-full object-cover rounded-t-lg" />
@@ -193,7 +193,7 @@ export default function SRPIndiaSite() {
           </aside>
 
           {/* Center: main blog */}
-          <main className="col-span-4">
+          <main className="md:col-span-4">
             {mainBlog && (
               <Card key={mainBlog.slug} className="mb-4 hover:shadow-lg">
                 <Head>
@@ -221,7 +221,7 @@ export default function SRPIndiaSite() {
           </main>
 
           {/* Right side: next two blogs */}
-          <aside className="col-span-2 space-y-4">
+          <aside className="md:col-span-2 space-y-4">
             {otherBlogs.slice(2, 4).map((b) => (
               <Card key={b.slug} className="mb-3  hover:shadow">
                 <div className="p-3">
