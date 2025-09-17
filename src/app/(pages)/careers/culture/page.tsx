@@ -19,6 +19,8 @@ export default function OurCulture() {
       .finally(() => SpinnerService.hideSpinner());
   }, []);
 
+  if (!culture) return <div>not Data found</div>;
+
   return (
     <>
       <div className="min-h-screen bg-white text-slate-800">

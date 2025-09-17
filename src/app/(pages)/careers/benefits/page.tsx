@@ -23,6 +23,9 @@ export default function Benefits() {
       .finally(() => SpinnerService.hideSpinner());
   }, []);
 
+  if (!benifits) return <div>not Data found</div>;
+
+
   return (
     <>
       <div className="min-h-screen bg-white dark:bg-white text-slate-800">
