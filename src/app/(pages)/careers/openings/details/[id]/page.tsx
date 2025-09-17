@@ -13,6 +13,8 @@ export async function generateStaticParams() {
 
 export default async function QASeniorBpoAgent({ params }: { params: { id: string } }) {
   const opening = await getOpeningBySlug(params.id);
+  console.log(opening);
+  
   if (!opening) return <div>Opening not found</div>;
 
   const seo = opening.Seo;

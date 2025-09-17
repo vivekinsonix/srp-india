@@ -112,7 +112,7 @@ export default function SRPIndiaSite() {
               <div className="flex flex-wrap items-center gap-2">
                 <h3 className="text-lg font-semibold">{j.title}</h3>
                 <div className="flex gap-2 justify-start">
-                  {JSON.parse(j.tags[0].children[0]?.text).map((t: any) => (
+                  {j.tags.map((t: any) => (
                     <Badge key={t}>{t}</Badge>
                   ))}
                 </div>
@@ -122,7 +122,7 @@ export default function SRPIndiaSite() {
               </p>
               <RichTextRenderer content={truncateContent(j.description)} />
               <div className="mt-4 flex gap-3">
-                <a href={`#apply-${j.id}`} className="rounded-xl bg-teal-600 px-4 py-2 text-white">
+                <a href={`/careers/openings/details/${j.slug}`} className="rounded-xl bg-teal-600 px-4 py-2 text-white">
                   Apply
                 </a>
               </div>
