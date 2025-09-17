@@ -47,7 +47,6 @@ export default async function QASeniorBpoAgent({ params }: { params: { id: strin
               <RichTextRenderer content={opening.requirements} />
             </div>
 
-            {/* Application Form (client-side) */}
             <ApplicationForm opening={opening} />
           </div>
         </main>

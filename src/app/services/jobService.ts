@@ -23,3 +23,10 @@ export function getOpeningBySlug(slug: string) {
   });
 }
 
+export function getCareersBenifits() {
+  return apiClient.get("/careers-benefits?createdAt:desc&&populate=*").then((res) => res.data);
+}
+
+export function getCareersCulture() {
+  return apiClient.get("/career-cultures?createdAt:desc&&populate=*").then((res) => res.data);
+}

@@ -1,7 +1,20 @@
 // app/our-culture/page.tsx
 'use client';
 import HeroSection from '@/app/components/subheader/AppHeroSection';
+import { getCareersCulture } from '@/app/services';
+import { CareersBenifits } from '@/app/utils/interfaces';
+import { useEffect, useState } from 'react';
+import ReactMarkdown from 'react-markdown';
+
 export default function OurCulture() {
+  const [culture, setCulture] = useState<CareersBenifits[]>([]);
+
+  useEffect(() => {
+    getCareersCulture().then((res) => {
+      setCulture(res?.data || []);
+    });
+  }, []);
+
   return (
     <>
       <div className="min-h-screen bg-white text-slate-800">
@@ -16,24 +29,9 @@ export default function OurCulture() {
           secondaryAction={{ label: 'Contact Us', href: '/contact' }}
         />
         <main className="container mx-auto max-w-7xl px-4 py-10">
-          <div className="prose mt-6 max-w-none text-gray-700 dark:prose-invert">
-            <h2>Principles</h2>
-            <ul>
-              <li>
-                <strong>Customer trust:</strong> promises kept, statuses accurate.
-              </li>
-              <li>
-                <strong>Coaching culture:</strong> feedback loops every week.
-              </li>
-              <li>
-                <strong>Bias to action:</strong> escalate early, resolve fast.
-              </li>
-            </ul>
-          </div>
-          <div className="prose mt-6 max-w-none text-gray-700 dark:prose-invert">
-            <h2>Routines</h2>
-            <p>Daily standups, weekly QA reviews, monthly skills clinics. Recognition is public and specific.</p>
-          </div>
+          {culture.map((e) => (
+            <ReactMarkdown>{e.content}</ReactMarkdown>
+          ))}
         </main>
       </div>
     </>

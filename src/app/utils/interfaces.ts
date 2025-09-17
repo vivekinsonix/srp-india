@@ -117,3 +117,20 @@ export interface QuestionField {
   updatedAt: string;
   publishedAt: string;
 }
+
+export interface CareersBenifits {
+  id: number;
+  documentId: string;
+  content: string; // Markdown/HTML string
+  createdAt: string; // ISO date string
+  updatedAt: string; // ISO date string
+  publishedAt: string; // ISO date string
+}
+
+export interface Suppliers {
+  company_name: string;
+  email: string;
+  website: string;
+  offering: string;
+  
+}

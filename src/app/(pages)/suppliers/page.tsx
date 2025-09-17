@@ -1,7 +1,8 @@
-// app/suppliers/page.tsx
 'use client';
-
-import { ChangeEvent, FormEvent, useState } from 'react';
+import { createSuppliers } from '@/app/services/otherService';
+import SpinnerService from '@/app/services/SpinnerService';
+import ToastService from '@/app/services/toasterService';
+import { ChangeEvent, FormEvent, useCallback, useState } from 'react';
 import HeroSection from '../../components/subheader/AppHeroSection';
 
 export default function Suppliers() {
@@ -17,11 +18,22 @@ export default function Suppliers() {
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = useCallback(async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    alert('Thank you! We have received your submission.');
-    setForm({ company: '', email: '', website: '', offer: '' });
-  };
+    SpinnerService.showSpinner();
+    await createSuppliers({ data: { company_name: form.company, email: form.email, offering: form.offer, website: form.website } })
+      .then((res) => {
+        ToastService.showToast('Thank you! We have received your submission.', 'success');
+        setForm({ company: '', email: '', website: '', offer: '' });
+      })
+      .catch((error) => {
+        ToastService.showToast(error.message, 'error');
+      })
+      .finally(() => {
+        SpinnerService.hideSpinner();
+      });
+
+  }, [form]);
 
   return (
     <>
