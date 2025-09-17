@@ -2,6 +2,7 @@
 'use client';
 import HeroSection from '@/app/components/subheader/AppHeroSection';
 import { getCareersBenifits } from '@/app/services';
+import SpinnerService from '@/app/services/SpinnerService';
 import { CareersBenifits } from '@/app/utils/interfaces';
 import { Card } from 'flowbite-react';
 import { useEffect, useState } from 'react';
@@ -11,9 +12,15 @@ export default function Benefits() {
   const [benifits, setBenifits] = useState<CareersBenifits[]>([]);
 
   useEffect(() => {
-    getCareersBenifits().then((res) => {
-      setBenifits(res?.data || []);
-    });
+    SpinnerService.showSpinner();
+    getCareersBenifits()
+      .then((res) => {
+        setBenifits(res?.data || []);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => SpinnerService.hideSpinner());
   }, []);
 
   return (

@@ -2,6 +2,7 @@
 'use client';
 import HeroSection from '@/app/components/subheader/AppHeroSection';
 import { getCareersCulture } from '@/app/services';
+import SpinnerService from '@/app/services/SpinnerService';
 import { CareersBenifits } from '@/app/utils/interfaces';
 import { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
@@ -10,9 +11,12 @@ export default function OurCulture() {
   const [culture, setCulture] = useState<CareersBenifits[]>([]);
 
   useEffect(() => {
-    getCareersCulture().then((res) => {
-      setCulture(res?.data || []);
-    });
+    SpinnerService.showSpinner();
+    getCareersCulture()
+      .then((res) => {
+        setCulture(res?.data || []);
+      })
+      .finally(() => SpinnerService.hideSpinner());
   }, []);
 
   return (
