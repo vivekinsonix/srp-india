@@ -15,7 +15,7 @@ const GlobalSpinner = () => {
   return (
     open && (
       <div className="fixed inset-0 flex items-center justify-center bg-white/30 z-[13000]">
-        <Spinner size="xl" color="default" />
+        <Spinner size="xl" color="success" />
       </div>
     )
   );
